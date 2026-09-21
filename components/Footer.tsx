@@ -1,0 +1,7 @@
+'use client';
+import { useState } from 'react';
+import { ArrowUp, ArrowUpRight, Check, Link } from 'lucide-react';
+export default function Footer(){const [copyState,setCopyState]=useState<'idle'|'copied'|'error'>('idle');
+ const copy=async()=>{try{await navigator.clipboard.writeText(window.location.href.split('#')[0]);setCopyState('copied');setTimeout(()=>setCopyState('idle'),2500);}catch{setCopyState('error');}};
+ return <footer className="footer" id="ending"><div className="container"><div className="section-kicker"><span className="section-index">12</span><span className="eyebrow">THE NEXT CHAPTER IS BEING WRITTEN</span></div><div className="ending-type" data-reveal>LEARN. BUILD.<br/><span>SECURE.</span> CREATE.</div><p className="ending-statement">以学习沉淀能力，以实践验证知识。<br/>以技术，创造价值。</p><div className="ending-actions"><a href="#archive" className="button button-light">查看全部荣誉<ArrowUpRight size={17}/></a><a href="#projects" className="text-button">访问项目<ArrowUpRight size={16}/></a></div><div className="footer-bottom"><a href="#home" className="brand" aria-label="YS. 返回首页">YS<span>.</span></a><span>叶森 © 2026<span className="footer-note">数字成果档案 · 以原始材料为据</span></span><div className="footer-controls"><button className="text-button" onClick={copy}>{copyState==='copied'?<Check size={14}/>:<Link size={14}/>}<span role="status">{copyState==='copied'?'链接已复制':copyState==='error'?'请复制浏览器地址':'复制链接'}</span></button><a href="#home" className="back-top" aria-label="返回顶部"><ArrowUp size={17}/></a></div></div></div></footer>;
+}

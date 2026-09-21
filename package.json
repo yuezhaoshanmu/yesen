@@ -1,0 +1,44 @@
+{
+  "name": "yesen-digital-honors",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --hostname 0.0.0.0",
+    "build": "next build",
+    "start": "next start --hostname 0.0.0.0",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "check:data": "node scripts/check-data.mjs",
+    "test:guestbook": "tsx --test tests/guestbook.test.ts",
+    "test:guestbook:http": "node scripts/guestbook-http-qa.mjs",
+    "test:guestbook:live": "node scripts/guestbook-live-qa.mjs",
+    "test:guestbook:ui": "node scripts/guestbook-ui-qa.mjs"
+  },
+  "dependencies": {
+    "@supabase/ssr": "^0.12.7",
+    "@supabase/supabase-js": "^2.116.0",
+    "lucide-react": "^0.577.0",
+    "next": "^15.5.12",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "server-only": "^0.0.1",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@electric-sql/pglite": "^0.5.8",
+    "@eslint/eslintrc": "^3.3.1",
+    "@types/node": "^22.15.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "eslint": "^9.39.0",
+    "eslint-config-next": "^15.5.12",
+    "lighthouse": "^13.5.0",
+    "playwright": "^1.63.0",
+    "tsx": "^4.23.15",
+    "typescript": "^5.8.3"
+  },
+  "overrides": {
+    "postcss": "^8.5.28"
+  }
+}
