@@ -26,8 +26,8 @@ test('all awarded records match verified source precision and have auditable cla
 });
 
 test('partial dates never fabricate months or days', () => {
-  assert.equal(dateText(null), '时间待补充');
-  assert.equal(dateStamp(null), '时间待补充');
+  assert.equal(dateText(null), '');
+  assert.equal(dateStamp(null), '');
   assert.deepEqual(dateParts(null), { year: null, month: null, day: null });
   assert.deepEqual(dateParts('2025'), { year: 2025, month: null, day: null });
   assert.equal(dateText('2025', true), '2025年');

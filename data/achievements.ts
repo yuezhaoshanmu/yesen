@@ -31,7 +31,7 @@ const cveMetadata = {
   level: 'international', levelLabel: '国际通用漏洞成果', category: 'technology', significance: cveMeaning,
   levelEvidence: 'CVE 官方记录中的唯一编号及 CNA 信息；属于国际通用编号体系，不是竞赛奖项。',
   dateLabel: 'CVE 发布时间', detailId: 'global', featured: true,
-  contextNote: '官方报告人：Missa；汇总文档声明为本人，账号实名关联证明待补充。',
+  contextNote: '官方报告人：Missa；汇总文档声明为本人。',
 } as const;
 const cnvdMetadata = {
   level: 'national', levelLabel: '国家级权威平台技术成果', category: 'technology', significance: cnvdMeaning,
@@ -67,19 +67,19 @@ const metadata: Metadata[] = [
     significance: '获得睿抗机器人开发者大赛江西赛区一等奖，体现技术实践、团队协作与创新应用能力。', dateLabel: '获奖时间',
     dateEvidence: 'image17 证书落款：2026年07月28日。', levelEvidence: '证书明确为江西赛区 AI 视觉应用竞赛项目一等奖，落款工业和信息化部人才交流中心。' },
   { ...challengeMetadata, id: 'challenge-care', shortTitle: '“挑战杯”优秀奖 · 颐护家' },
-  { ...challengeMetadata, id: 'challenge-security', shortTitle: '“挑战杯”优秀奖 · 安阑' },
+  { ...challengeMetadata, id: 'challenge-security', shortTitle: '“挑战杯”优秀奖 · 安帼' },
   { id: 'social', shortTitle: '江西省“三下乡”优秀个人', level: 'provincial', levelLabel: '省级社会实践荣誉', category: 'social-practice', detailId: 'archive',
     significance: '省级社会实践个人荣誉，体现志愿服务、社会实践与责任担当。', dateLabel: '获评年份',
     dateEvidence: 'image5 正文为2025年江西省“三下乡”表彰；2025年12月23日为报道日期，不是颁奖日期。',
     levelEvidence: '学校官方报道明确“省级荣誉”，引述省委宣传部、省教育厅、团省委、省学联联合发布的通报，点名叶森获评优秀个人。',
-    contextNote: '获评月份、日期待补充；依据学校官方报道。', relatedDates: [{ label: '校方报道时间', date: '2025-12-23' }] },
+    contextNote: '依据学校官方报道。', relatedDates: [{ label: '校方报道时间', date: '2025-12-23' }] },
   { id: 'training', shortTitle: '入党积极分子培训班优秀学员', level: 'school', levelLabel: '校级学习荣誉', category: 'training', detailId: 'archive',
     significance: '获学校党校培训班优秀学员称号，体现认真学习、纪律意识与责任担当。', dateLabel: '获评时间',
     dateEvidence: 'image4 证书落款：二〇二五年五月二十七日。', levelEvidence: '颁发与盖章单位均为中共江西科技职业学院委员会党校。' },
   { id: 'pku', shortTitle: '北京大学《操作系统与虚拟化安全》', level: 'other', levelLabel: '在线课程认证 · 不作奖项定级', category: 'certification', detailId: 'archive',
-    significance: '完成北京大学授权的操作系统与虚拟化安全在线课程，积累系统安全知识。', dateLabel: '认证时间',
+    significance: '完成北京大学授权的《操作系统与虚拟化安全》在线课程及相关考核，积累系统安全知识。', dateLabel: '认证时间',
     dateEvidence: 'PDF 第 1 页：Apr 23, 2026。', levelEvidence: '北京大学授权、Coursera 授课的在线课程结业证明，不属于校级竞赛或荣誉。',
-    contextNote: '在线课程认证，不代表学历、学位或正式在校学籍。' },
+    contextNote: '' },
 ];
 
 /** Unified public view: source dates/assets come from the evidence archive; no duplicate dates. */

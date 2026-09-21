@@ -6,11 +6,11 @@ export function dateParts(date: string | null) {
 
 export function dateText(date: string | null, full = false): string {
   const { year, month, day } = dateParts(date);
-  if (!year) return '时间待补充';
+  if (!year) return '';
   return `${year}年${month ? `${month}月` : ''}${full && day ? `${day}日` : ''}`;
 }
 
 export function dateStamp(date: string | null): string {
-  if (!date) return '时间待补充';
+  if (!date) return '';
   return date.length === 4 ? `${date}年` : date.slice(0, 7).replace('-', '.');
 }

@@ -27,7 +27,7 @@ npm start
 - Google 优先的浅色展览，CSS 动效与 IntersectionObserver 滚动揭示，避免引入重型 3D 与滚动库。
 - 系统本地字体、WebP 缩略图、Next Image、减少动态效果支持。
 - 原件永不裁切或修改；证书缩略图与高清预览完整显示，照片只校正阅读方向。
-- 原生 dialog 提供焦点约束与 Escape 退出；左右方向键切换；图片放大后可滚动查看。
+- 原生 dialog 提供焦点约束与 Escape 退出；左右方向键切换；图片支持双指缩放及放大后拖动，移动端提供全屏查看器。
 
 ## 内容维护
 
@@ -55,3 +55,15 @@ npm start
 # 实时留言墙
 
 已新增 Supabase 留言墙、Next.js 服务端 API、数据库 RLS、Presence 在线人数及 `/admin/guestbook` 管理工作台。环境变量、数据库迁移、权限设计和真实双客户端验收方法见 [部署文档](docs/GUESTBOOK.md)。未配置数据库时显示真实离线状态，作品集保持可访问。
+
+## 移动端阅读验收
+
+`node scripts/reading-ui-qa.cjs` 检查 390 / 360 / 412 / 1440px 布局、触摸缩放、44px 触摸目标、动画单次播放及减少动态效果。通过 `QA_BASE_URL` 指定测试地址，默认 http://localhost:3011。
+
+本地开发服务运行期间，可用独立目录验证生产构建，避免争用缓存（PowerShell）：
+
+```powershell
+$env:NEXT_BUILD_DIR='.next-production'
+npm run build
+npm run start -- --port 3011
+```

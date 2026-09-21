@@ -3,6 +3,7 @@ import './globals.css';
 import './guestbook.css';
 import './exhibition.css';
 import './achievements.css';
+import './reading.css';
 
 export const metadata: Metadata = {
   title: '叶森 YESEN — 个人技术成果与荣誉档案',

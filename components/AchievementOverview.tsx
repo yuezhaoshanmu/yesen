@@ -33,7 +33,7 @@ export default function AchievementOverview() {
   return <section id="overview" className="section honors-overview section-anchor" aria-labelledby="overview-title"><div className="container">
     <div className="overview-heading"><div><div className="section-kicker"><span className="section-index">02</span><span className="eyebrow">ACHIEVEMENT OVERVIEW</span></div><h2 id="overview-title">荣誉总览<span>每一步，都有据可循。</span></h2><p>以时间为轴，记录每一次学习、实践与技术成果。</p></div><span className="overview-total"><strong>{achievementCounts.documented}</strong>项成果归档</span></div>
     <div className="overview-stats">{stats.map(stat => <div key={stat.label} className={`overview-stat stat-${stat.tone}`}><span>{stat.label}</span><strong>{stat.value}<small>项</small></strong><p>{stat.hint}</p></div>)}</div>
-    <p className="overview-count-note">另含 {levelCounts['national-ranking']} 项全国实战排名 · 每个 CVE 编号独立计数 · 待补充的证书兑换订单不计入</p>
+    <p className="overview-count-note">另含 {levelCounts['national-ranking']} 项全国实战排名 · 每个 CVE 编号独立计数</p>
     <div className="overview-tools">
       <div className="overview-filters" role="group" aria-label="筛选荣誉层级与类别">{achievementFilters.map(option => <button type="button" key={option.id} aria-pressed={filter === option.id} onClick={() => setFilter(option.id)}>{option.label}</button>)}</div>
       {achievementYears.length > 1 && <div className="overview-years" role="group" aria-label="筛选成果年份"><span>年份</span><button type="button" aria-pressed={year === null} onClick={() => setYear(null)}>全部年份</button>{achievementYears.map(value => <button type="button" key={value} aria-pressed={year === value} onClick={() => setYear(value)}>{value}</button>)}</div>}

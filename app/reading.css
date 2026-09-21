@@ -1,0 +1,64 @@
+.mobile-current-section { display: none; }
+.hero-portrait-enter { animation: none; }
+.viewer-close { width: auto; min-width: 80px; gap: 8px; font-size: 16px; }
+.image-viewport.touch-certificate { display: flex; overflow: hidden; touch-action: none; cursor: grab; }
+.touch-certificate img { user-select: none; transform-origin: center; box-shadow: none; }
+.touch-certificate:active { cursor: grabbing; }
+@media (max-width: 900px) {
+  .mobile-current-section { display: block; margin-left: auto; color: #395c6b; font-size: 15px; }
+  .scroll-progress { height: 2px; background: #387d86; }
+  .navbar, .is-scrolled .navbar, .nav-links.open { backdrop-filter: none; background: #f7f9fb; box-shadow: none; }
+  .section:not(.hero) { padding-block: 80px; }
+  .section-heading h2, .edusrc-layout .section-heading h2, .google-chinese-title { font-size: clamp(26px,7vw,32px); line-height: 1.6; }
+  .hero-copy h2 { font-size: 34px; line-height: 1.6; }
+  .section p, .section-heading p, .google-introduction, .google-learning-header p, .google-capability p, .overview-entry-copy>p, .competition-copy>p.achievement-significance, .other-honor-copy p { font-size: 17px; line-height: 1.75; }
+  .overview-entry h4, .project-details h3, .other-honor-copy h3, .archive-card-meta h3, .google-capability h4 { font-size: 21px; line-height: 1.6; }
+  .section .disclosure, .overview-context, .achievement-context, .overview-date>span, .overview-entry-level, .project-tags span, .google-proof-caption, .google-certificate>span, .google-completion small, .google-capability>span { font-size: 15px; line-height: 1.7; }
+  .overview-group, .project-details, .other-honor-copy, .cve-card, .national-card { padding: 24px; }
+  .overview-entry h4, .cve-center h3 { overflow-wrap: anywhere; }
+  .cve-center { flex-wrap: wrap; }
+  .overview-heading { align-items: flex-start; }
+  .overview-heading h2>span { font-size: 17px; }
+  .overview-grid { animation: none; }
+  .google-capabilities { grid-template-columns: 1fr; }
+  .project-details p { min-height: 0; }
+  button, .text-button, .button, .project-link, .nav-links a, summary, .footer-controls a { min-height: 44px; }
+  .icon-button, .zoom-controls .icon-button { min-width: 44px; width: 44px; height: 44px; }
+  .overview-tools button, .archive-search input, .section input, .section textarea { min-height: 44px; }
+  .nav-archive, .hero-secondary, .hero-bottom a { display: inline-flex; align-items: center; min-height: 44px; }
+  .brand { display: inline-flex; min-height: 44px; align-items: center; }
+  .viewer-close { width: auto; min-width: 88px; }
+  .project-link { display: flex; align-items: center; }
+  .other-honor-card, .archive-card, .project-card, .google-certificate, .competition-certificate, .register-row, .secondary-award { transition: transform 150ms ease-out; }
+  .other-honor-card:active, .archive-card:active, .project-card:active, .google-certificate:active, .competition-certificate:active, .register-row:active, .secondary-award:active { transform: scale(.985); }
+  .spotlight::after { display: none; }
+  .hero-portrait-enter { animation: none; }
+  .hero-portrait-stage::before, .hero-portrait-stage::after, .hero-portrait-image { filter: none; }
+  .status-dot { animation: none; box-shadow: none; }
+  .will-reveal { opacity: 1; transform: none; transition: none; }
+  .google-certificate, .competition-certificate { rotate: none; }
+  .reading-focus { outline: 1px solid #46899055; outline-offset: -1px; }
+  .overview-node { background: #d5dfe5; }
+  .overview-entry.reading-passed .overview-node { background: #397d87; }
+  .overview-entry.reading-passed::after { background: #8eb8ba; }
+  .evidence-modal { inset: 0; width: 100%; max-width: none; height: 100dvh; max-height: none; border: 0; border-radius: 0; animation: viewer-fade 220ms ease-out; }
+  .evidence-modal::backdrop { backdrop-filter: none; animation: viewer-fade 220ms ease-out; }
+  .viewer-shell { height: 100%; }
+  .viewer-top { position: relative; z-index: 2; padding: max(8px,env(safe-area-inset-top)) 16px 8px; gap: 8px; }
+  .viewer-main { display: block; overflow-y: auto; flex: 1; min-height: 0; }
+  .viewer-art { height: 60dvh; min-height: 300px; padding: 16px 16px 76px; }
+  .touch-certificate { animation: certificate-enter 220ms ease-out; }
+  .viewer-details { overflow: visible; padding: 24px; }
+  .viewer-details>p, .viewer-details dd { font-size: 17px; line-height: 1.75; }
+  .viewer-details dt, .viewer-details>.viewer-note, .viewer-details>.source-note { font-size: 15px; }
+  .viewer-bottom { padding: 8px 16px max(8px,env(safe-area-inset-bottom)); }
+  .viewer-bottom>.micro { display: none; }
+  .zoom-controls { backdrop-filter: none; background: #f7f9fb; }
+  .viewer-bottom>.text-button { min-height: 44px; }
+}
+@keyframes viewer-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes certificate-enter { from { opacity: .7; transform: scale(.98); } to { opacity: 1; transform: scale(1); } }
+@media (prefers-reduced-motion: reduce) {
+  .reading-focus { outline: none; }
+  .other-honor-card:active, .archive-card:active, .project-card:active, .google-certificate:active, .competition-certificate:active, .register-row:active, .secondary-award:active { transform: none; }
+}
