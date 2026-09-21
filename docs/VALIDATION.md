@@ -1,25 +1,51 @@
-# 最终验证记录
+# 荣誉总览版本验收记录
 
-验证对象：本地 Next.js 生产构建，http://localhost:3000 。Lighthouse 为模拟环境分数，实际部署后的域名、网络与设备会影响结果。
+2026-09-21 本轮验证地址为 http://localhost:3002 ，使用最新本地生产构建。
+
+| 检查 | 本轮结果 |
+| --- | --- |
+| 原始材料复核 | 8份PDF全文、1份DOCX及18张嵌入图片；日期与层级来源见ACHIEVEMENT_DATE_AUDIT.md |
+| npm run build | 通过，首页静态生成，首载JS约220 kB |
+| npm run typecheck / npm run lint | 通过 |
+| npm run check:data | 17条材料原件哈希和资源通过；16项已归档成果，1项待补充订单不计数 |
+| npm run test:achievements | 4项通过：原件日期一致性、部分日期精度、级别/年份组合筛选、缺失日期排序 |
+| npm run test:achievements:ui | 1440/390/320px通过；8个筛选、年份组合、空结果恢复、16个证明弹窗和精确详情定位、日期字号至少16px |
+| scripts/visual-qa.cjs | 320/360/390/820/1440/1920/2560px通过；无横向溢出；章节顺序、菜单、档案搜索、证书缩放与焦点恢复正常 |
+| scripts/accessibility-qa.cjs | 1440/390px的正文、弹窗、展开课程/档案共6种状态，WCAG A/AA均零问题 |
+| 视觉复核 | 已检查桌面总览、国家成果、其他荣誉及手机Hero、时间线、CVE日期、证书弹窗；保留明亮中文为主的设计 |
+| 日期语义 | 三下乡显示2025年，报道日独立列出；CNNVD显示证明出具时间与提交时间；挑战杯仅年月；CVE用Published |
+| 分类 | 国际认可5、国家平台4、全国实战排名1、省级2、校级3、其他课程认证1；均自动统计 |
+
+运行浏览器检查时可设置 `QA_BASE_URL=http://localhost:3002`，默认地址仍为3000端口。测试未提交留言，未重新验证外部数据库写入或Coursera账号身份。已有留言墙外部服务状态不属于本轮荣誉总览改动。
+
+当前顺序：Hero → 荣誉总览 → Google → EDUSRC → CNNVD/CNVD → CVE → 睿抗 → 其他荣誉 → 全栈项目 → 留言墙 → Ending。
+
+## 之前的 Google 优先版本记录
+
+日期：2026-09-21。验证对象：本地 Next.js 生产构建，http://localhost:3000 。
 
 | 检查 | 结果 |
 | --- | --- |
-| npm run build | 通过；首页静态生成；首载 JS 约 120 kB |
-| npm run lint | 通过，0 错误、0 警告 |
-| npm run check:data | 17 条证据资源、原件 SHA-256、6 个验证链接、3 个项目资源、时间线关联全部通过 |
-| 桌面 Lighthouse | Performance 100 / Accessibility 100 / Best Practices 100 / SEO 100 |
-| 移动 Lighthouse | Performance 98 / Accessibility 100 / Best Practices 100 / SEO 100 |
-| 桌面 LCP / TBT / CLS | 0.5 s / 0 ms / 0 |
-| 移动 LCP / TBT / CLS | 2.2 s / 80 ms / 0.001 |
-| axe WCAG A/AA | 1440 与 390 宽度的正文及证据弹窗均为 0 条问题 |
-| JavaScript 页面异常 | 未发现 |
+| npm run build | 通过；首页静态生成；首载 JS 约215 kB（含现有留言墙） |
+| npm run lint | 通过；0错误、0警告 |
+| npm run check:data | 通过；17条证据原件哈希、预览、6个验证入口、3个项目资源、时间线关联 |
+| 页面主章节顺序 | Hero、Google、EDUSRC、CNNVD / CNVD、CVE、睿抗、其他荣誉、全栈项目、留言墙；footer为第10章 |
+| Hero 摘要 | Google、24、国家、国际、3个项目 |
+| 国家平台内部顺序 | CNNVD在CNVD之前，证明列表同步 |
+| Google内容 | PDF全文与链接注释复核；9门课程、技能范围及真实验证地址 |
+| 证据查看器 | Google为首项，下一项为EDUSRC，再下一项为CNNVD；100%–300%放大、缩小、重置、滚动平移、原件入口、方向键、ESC与焦点返回通过 |
+| 筛选与搜索 | 类别、编号搜索、空结果、清除筛选通过；其他荣誉中可展开全部材料 |
+| 响应式 | 320、360、390、820、1440、1920、2560宽度通过；无横向溢出 |
+| axe WCAG A/AA | 1440与390宽度，正文、Google弹窗、展开课程和全部档案均0问题 |
+| JavaScript页面异常 | 未发现 |
+| 减少动态效果 | 关闭平滑滚动与入场动效，通过 |
 
-浏览器检查覆盖 1440×1000、1920×1080、2560×1440、820×1180、390×844、360×800。所有尺寸无横向溢出。视觉复核覆盖 12 个叙事章节、证据查看器及分享图。
+截图和机器检查结果位于忽略提交的qa/目录。scripts/visual-qa.cjs和scripts/accessibility-qa.cjs默认使用本机Edge无头浏览器。截图等待EDUSRC数字动效结束，避免把动画中间帧误当作最终排名。
 
-交互核验包括证据打开、关闭、原生 modal、Tab/Shift+Tab 焦点循环、关闭后恢复触发按钮焦点、左右键切换、放大/缩小/重置、分类筛选、编号搜索、空结果恢复、移动菜单、真实外链及 noreferrer/noopener 属性、减少动态效果偏好。
+本轮仅执行与成果展示改版相关的构建、数据、视觉、交互和可访问性检查，没有重新测量Lighthouse；旧版分数不适用于当前页面。
 
-一次增强键盘检查发现原生 dialog 在 Shift+Tab 边界可能将焦点交还浏览器，现已增加显式边界循环并修正原触发按钮的引用，复测通过。
+## 外部服务与材料边界
 
-审计报告与截图保存在忽略提交的 qa/ 目录；可使用 scripts/visual-qa.cjs、scripts/accessibility-qa.cjs、scripts/lighthouse-qa.mjs 复现。当前脚本默认使用本机 Edge 无头浏览器。
+本地验证时/api/guestbook?limit=1返回503，留言墙显示实际连接异常；Realtime连接可建立，但不能据此断言数据库读写正常。本次保留现有后端实现，没有提交测试留言，没有验证真实留言发送和同步。
 
-事实限制：成绩单、137 小时志愿服务记录、CVE 署名与实名关联及项目职责/技术栈仍待补充；网站已有对应说明。未将课程认证写成学位、国家平台成果写成竞赛一等奖，或将未收到的证书订单写成已获得荣誉。
+成绩单、137小时志愿服务记录、CVE署名与实名关联、项目职责和技术栈仍待补充。CNNVD按提交证明展示，CNVD按收录证明展示；专业课程认证不等同于大学学历或学位。Google官方验证链接确认来自PDF，本次没有重新向Coursera核验个人身份。

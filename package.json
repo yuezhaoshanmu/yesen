@@ -9,6 +9,8 @@
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "check:data": "node scripts/check-data.mjs",
+    "test:achievements": "tsx --test tests/achievements.test.ts",
+    "test:achievements:ui": "node scripts/achievements-ui-qa.cjs",
     "test:guestbook": "tsx --test tests/guestbook.test.ts",
     "test:guestbook:http": "node scripts/guestbook-http-qa.mjs",
     "test:guestbook:live": "node scripts/guestbook-live-qa.mjs",

@@ -1,9 +1,12 @@
 from pathlib import Path
 from zipfile import ZipFile
-import json, shutil, subprocess
+import json, shutil, subprocess, sys
 from pypdf import PdfReader
 from lxml import etree
 from PIL import Image, ImageOps, ImageDraw
+
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'research'

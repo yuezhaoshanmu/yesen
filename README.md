@@ -23,15 +23,17 @@ npm start
 ## 架构
 
 - Next.js 15 App Router、React 19、TypeScript、Lucide。
-- 主体内容服务端静态生成；证据弹窗按需加载。无数据库、无登录要求。
-- 原创 Canvas 球体、CSS 动效、IntersectionObserver 滚动揭示，避免引入重型 3D 与滚动库。
-- 系统本地字体、WebP 缩略图、Next Image、视口外暂停 Canvas、页面不可见暂停、减少动态效果支持。
+- 主体成果内容服务端静态生成；证据弹窗按需加载。公开浏览无需登录；留言墙使用 Supabase 数据库，管理工作台需登录。
+- Google 优先的浅色展览，CSS 动效与 IntersectionObserver 滚动揭示，避免引入重型 3D 与滚动库。
+- 系统本地字体、WebP 缩略图、Next Image、减少动态效果支持。
 - 原件永不裁切或修改；证书缩略图与高清预览完整显示，照片只校正阅读方向。
 - 原生 dialog 提供焦点约束与 Escape 退出；左右方向键切换；图片放大后可滚动查看。
 
 ## 内容维护
 
 - `data/profile.ts`：基本信息与未核实指标。
+- `data/google-certification.ts`：依据原始 Google 证书核对的九门课程。
+- `app/exhibition.css`：浅色展览主题、核心成果视觉与响应式布局。
 - `data/achievements.ts`：成果编排、统计及时间线。
 - `data/projects.ts`：项目真实网址与来源说明；未知技术栈保持为空。
 - `data/evidence.ts`：所有成果的来源、机构、日期、编号、证据状态和验证链接。

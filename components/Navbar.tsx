@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { ArrowUpRight, Menu, X } from 'lucide-react';
-const links=[['home','首页'],['academic','成绩'],['national','安全成果'],['global','国际成果'],['projects','项目'],['competitions','竞赛'],['social','社会实践'],['archive','荣誉档案'],['guestbook','留言墙']];
+const links=[['home','首页'],['overview','荣誉总览'],['certification','Google 认证'],['edusrc','全国第24'],['national','国家成果'],['global','国际成果'],['competitions','竞赛'],['archive','其他荣誉'],['projects','全栈项目'],['guestbook','留言墙']];
 
 export default function Navbar(){
  const [active,setActive]=useState('home');const [open,setOpen]=useState(false);const [scrolled,setScrolled]=useState(false);const progress=useRef<HTMLDivElement>(null);
@@ -14,5 +14,5 @@ export default function Navbar(){
    window.addEventListener('scroll',scroll,{passive:true});scroll();
    return ()=>{window.removeEventListener('scroll',scroll);cancelAnimationFrame(frame);observer.disconnect();};
  },[]);
- return <><div className="scroll-progress" ref={progress}/><header className={`nav-wrap ${scrolled?'is-scrolled':''}`}><nav className="navbar" aria-label="主导航"><a href="#home" className="brand" onClick={()=>setOpen(false)} aria-label="YS. 叶森，返回首页">YS<span>.</span></a><div className={`nav-links ${open?'open':''}`} id="navigation-links">{links.map(([id,name])=><a key={id} href={'#'+id} className={active===id?'active':''} aria-current={active===id?'location':undefined} onClick={()=>setOpen(false)}>{name}</a>)}</div><a href="#archive" className="nav-archive">成果档案 <ArrowUpRight size={14}/></a><button className="menu-toggle icon-button" aria-label={open?'关闭导航':'打开导航'} aria-controls="navigation-links" aria-expanded={open} onClick={()=>setOpen(!open)}>{open?<X size={21}/>:<Menu size={21}/>}</button></nav></header></>;
+ return <><div className="scroll-progress" ref={progress}/><header className={`nav-wrap ${scrolled?'is-scrolled':''}`}><nav className="navbar" aria-label="主导航"><a href="#home" className="brand" onClick={()=>setOpen(false)} aria-label="YS. 叶森，返回首页">YS<span>.</span></a><div className={`nav-links ${open?'open':''}`} id="navigation-links">{links.map(([id,name])=><a key={id} href={'#'+id} className={active===id?'active':''} aria-current={active===id?'location':undefined} onClick={()=>setOpen(false)}>{name}</a>)}</div><a href="#overview" className="nav-archive">荣誉总览 <ArrowUpRight size={14}/></a><button className="menu-toggle icon-button" aria-label={open?'关闭导航':'打开导航'} aria-controls="navigation-links" aria-expanded={open} onClick={()=>setOpen(!open)}>{open?<X size={21}/>:<Menu size={21}/>}</button></nav></header></>;
 }

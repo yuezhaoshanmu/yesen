@@ -1,5 +1,7 @@
 # 叶森个人成果材料核验清单
 
+最新日期与层级复核见 [ACHIEVEMENT_DATE_AUDIT.md](ACHIEVEMENT_DATE_AUDIT.md)。其中“三下乡”成果日期已改为仅保留2025年，2025-12-23单独作为报道日期；兑换订单的证书获得时间为null，不计荣誉。以下为历次材料与设计记录。
+
 扫描范围：工作目录原始 8 份 PDF、1 份 DOCX。DOCX 全部文本与 18 张嵌入图片已提取；重复证书合并为同一成果，订单与二维码不计入荣誉数量。保留原文件不修改；public/evidence/originals 提供逐字节一致的证据副本，data/assets.json 保留 SHA-256 与来源定位。
 
 ## 可核对的成果
@@ -45,3 +47,11 @@ CVE 链接仅由材料明确出现的四个编号构建。Coursera 链接来自 
 首屏 / 成绩总览 / 国家平台 / 国际 CVE / Google 认证 / EDUSRC / 工程项目 / 竞赛 / 社会实践 / 荣誉档案 / 时间线 / 结语。
 
 黑曜石与深海背景、冷银排版、克制翡翠高光；首屏以原创几何安全核心和巨大中文姓名建立记忆点。重点信息采用非均匀 Bento 权重。证书始终完整 contain，高清原件独立可访问。动画使用 transform/opacity 与轻量 Canvas；视口外暂停并支持减少动态效果。无需重型 3D 依赖。
+
+## Google 优先展示复核（2026-09-21）
+
+重新读取《谷歌网络安全认证.pdf》全文及PDF链接注释。证书明确记载9门Google课程、实践评估与入门级Python、Linux、SQL、SIEM、IDS应用，以及常见风险、威胁和漏洞识别。九门课程逐项录入data/google-certification.ts；页面中文课程名为译文，英文保留证书原名。
+
+官方验证地址直接来自PDF URI注释：https://coursera.org/verify/professional-cert/P6KEAPHJ0ZGQ 。此复核确认地址来源，不将其表述为本次已向Coursera重新核验账户身份。
+
+Google在Hero摘要、首个成果模块、完整档案与证据查看器中均为第一项。CNNVD与CNVD分别保留提交证明、收录证明的原始含义；北京大学课程认证移至其他荣誉。

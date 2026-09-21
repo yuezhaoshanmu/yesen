@@ -1,0 +1,110 @@
+/* Scope the portrait Hero to avoid legacy exhibition transforms and cropping. */
+.hero-with-portrait { background: #f7f9fb; }
+.hero-with-portrait .hero-inner { padding-top: 112px; }
+.hero-with-portrait .hero-stage {
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr);
+  grid-template-areas: "copy portrait" "metrics metrics";
+  gap: 24px 64px;
+  min-height: 0;
+  padding: 22px 0 0;
+  align-items: center;
+}
+.hero-with-portrait .hero-copy { grid-area: copy; padding: 12px 0; min-width: 0; }
+.hero-with-portrait .hero-intro { margin-bottom: 14px; }
+.hero-with-portrait .name-lockup { gap: 18px; }
+.hero-with-portrait .name-lockup h1 { font-size: clamp(88px, 7.3vw, 124px); line-height: 1.12; letter-spacing: -7px; }
+.hero-with-portrait .romanized { position: static; display: inline; margin: 0 0 0 8px; font-size: 10px; align-self: auto; }
+.hero-with-portrait .hero-copy h2 { font-size: clamp(25px, 2.2vw, 32px); line-height: 1.5; margin-top: 16px; }
+.hero-with-portrait .hero-description { font-size: 13px; margin-top: 15px; max-width: none; line-height: 1.85; }
+.hero-credential { display: inline-flex; align-items: center; gap: 9px; margin-top: 18px; color: #355b78; font-size: 12px; line-height: 1.8; }
+.hero-credential strong { font-family: Arial, sans-serif; font-size: 15px; font-weight: 600; margin-right: 4px; }
+.hero-with-portrait .hero-actions { margin-top: 23px; gap: 25px; flex-wrap: wrap; }
+.hero-with-portrait .hero-metrics { grid-area: metrics; display: grid; grid-template-columns: 1.15fr 1.1fr 1.15fr 1.1fr 1.1fr .9fr; margin: 0; padding-top: 22px; gap: 0; }
+.hero-with-portrait .hero-metric { grid-column: auto; grid-row: auto; display: flex; flex-direction: column; gap: 8px; padding: 0 22px; margin: 0; border: 0; border-left: 1px solid var(--line); min-width: 0; }
+.hero-with-portrait .hero-metric:first-child { padding-left: 0; border-left: 0; }
+.hero-with-portrait .hero-metric:last-child { padding-right: 0; }
+.hero-with-portrait .metric-number { font-size: clamp(30px, 2.8vw, 42px); line-height: 1.2; font-weight: 500; gap: 5px; white-space: nowrap; }
+.hero-with-portrait .metric-number.metric-chinese { font-size: clamp(25px, 2.3vw, 34px); letter-spacing: 1px; line-height: 1.48; }
+.hero-with-portrait .hero-metric-academic .metric-number { color: #245b51; }
+.hero-with-portrait .metric-label { font-size: 12px; line-height: 1.5; }
+.hero-with-portrait .metric-note { font-size: 10px; line-height: 1.6; }
+.hero-with-portrait .hero-metrics .metric-note { display: block; }
+.hero-with-portrait .hero-metric-google .metric-number { align-self: auto; grid-row: auto; }
+.hero-with-portrait .hero-bottom { padding-block: 25px 22px; }
+
+/* Atmosphere sits behind the photograph; no tint or mask touches the person. */
+.hero-portrait-stage { grid-area: portrait; position: relative; isolation: isolate; align-self: end; display: grid; justify-items: center; min-width: 0; padding-bottom: 12px; }
+.hero-portrait-stage::before { content: ""; position: absolute; z-index: -1; inset: -4% -5% -8%; border-radius: 50%; background: radial-gradient(ellipse at 55% 42%, #dceaf580, transparent 65%), radial-gradient(ellipse at 40% 65%, #d9eae550, transparent 60%); filter: blur(22px); pointer-events: none; }
+.hero-portrait-stage::after { content: ""; position: absolute; z-index: -1; bottom: 3px; width: 66%; height: 20px; border-radius: 50%; background: radial-gradient(ellipse, #344c601b, transparent 70%); filter: blur(5px); pointer-events: none; }
+.hero-portrait-enter { max-width: 100%; animation: portrait-enter 800ms ease-out both; }
+.hero-portrait-touch { transform-origin: center bottom; -webkit-tap-highlight-color: transparent; }
+.hero-portrait-image { width: auto; height: clamp(400px, 57svh, 600px); max-width: 100%; object-fit: contain; object-position: center bottom; filter: drop-shadow(0 8px 12px #324a6010) drop-shadow(0 0 1px #f8fbff55); user-select: none; }
+@keyframes portrait-enter { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (min-width: 901px) and (max-height: 800px) {
+  .hero-with-portrait .hero-inner { padding-top: 104px; }
+  .hero-with-portrait .hero-stage { gap: 17px 50px; padding-top: 16px; }
+  .hero-with-portrait .name-lockup h1 { font-size: 88px; }
+  .hero-with-portrait .hero-copy h2 { font-size: 25px; margin-top: 12px; }
+  .hero-with-portrait .hero-description { margin-top: 12px; }
+  .hero-with-portrait .hero-credential { margin-top: 13px; }
+  .hero-with-portrait .hero-actions { margin-top: 18px; }
+  .hero-with-portrait .hero-bottom { padding-block: 20px; }
+  .hero-portrait-image { height: clamp(340px, 55svh, 440px); }
+}
+@media (min-width: 901px) and (max-width: 1150px) {
+  .hero-with-portrait .hero-stage { column-gap: 30px; }
+  .hero-with-portrait .hero-metric { padding-inline: 12px; }
+  .hero-with-portrait .metric-label { font-size: 10px; }
+  .hero-with-portrait .metric-note { font-size: 9px; }
+}
+@media (max-width: 900px) {
+  .hero-with-portrait .hero-inner { padding-top: 106px; }
+  .hero-with-portrait .hero-stage { grid-template-columns: minmax(0, 1fr); grid-template-areas: "copy" "metrics" "portrait"; gap: 25px; padding-top: 26px; }
+  .hero-with-portrait .hero-copy { padding: 0; pointer-events: auto; }
+  .hero-with-portrait .hero-metrics { grid-template-columns: repeat(3, minmax(0, 1fr)); padding: 0; }
+  .hero-with-portrait .hero-metric { padding: 17px 16px; border: 0; border-bottom: 1px solid var(--line); }
+  .hero-with-portrait .hero-metric:nth-child(3n + 1) { padding-left: 0; }
+  .hero-with-portrait .metric-number { font-size: 34px; }
+  .hero-with-portrait .metric-number.metric-chinese { font-size: 27px; }
+  .hero-portrait-stage { width: min(100%, 540px); justify-self: center; }
+  .hero-portrait-image { height: clamp(350px, 42svh, 450px); }
+}
+@media (min-width: 701px) and (max-width: 900px) {
+  .hero-with-portrait .hero-stage { grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); grid-template-areas: "copy portrait" "metrics metrics"; column-gap: 24px; }
+  .hero-with-portrait .name-lockup h1 { font-size: 78px; }
+  .hero-with-portrait .name-lockup { gap: 12px; }
+  .hero-with-portrait .hero-copy h2 { font-size: 24px; }
+  .hero-with-portrait .hero-description { font-size: 12px; }
+  .hero-with-portrait .hero-actions { gap: 15px; }
+  .hero-portrait-stage { width: 100%; align-self: center; }
+  .hero-portrait-image { height: auto; width: 100%; max-height: 450px; }
+}
+@media (max-width: 600px) {
+  .hero-with-portrait .hero-inner { padding-top: 91px; }
+  .hero-with-portrait .hero-stage { padding-top: 22px; gap: 22px; }
+  .hero-with-portrait .hero-intro { font-size: 10px; margin-bottom: 12px; }
+  .hero-with-portrait .name-lockup h1 { font-size: 68px; letter-spacing: -4px; }
+  .hero-with-portrait .romanized { font-size: 8px; letter-spacing: 1px; margin-left: 5px; }
+  .hero-with-portrait .hero-copy h2 { font-size: 22px; margin-top: 12px; line-height: 1.5; }
+  .hero-with-portrait .hero-description { font-size: 12px; margin-top: 12px; }
+  .hero-with-portrait .hero-credential { display: none; }
+  .hero-with-portrait .hero-actions { margin-top: 17px; gap: 18px; }
+  .hero-with-portrait .hero-actions .button { min-height: 44px; font-size: 12px; }
+  .hero-with-portrait .hero-metric { padding: 13px 5px; gap: 5px; }
+  .hero-with-portrait .metric-number { font-size: clamp(25px, 7vw, 31px); letter-spacing: -1px; }
+  .hero-with-portrait .metric-number small { font-size: 10px; }
+  .hero-with-portrait .metric-number.metric-chinese { font-size: 23px; line-height: 1.35; }
+  .hero-with-portrait .metric-label { font-size: 10px; }
+  .hero-with-portrait .metric-note { font-size: 9px; }
+  .hero-portrait-image { height: clamp(280px, 43svh, 350px); }
+  .hero-with-portrait .hero-bottom { font-size: 9px; gap: 10px; padding-top: 16px; }
+}
+@media (prefers-reduced-motion: reduce) { .hero-portrait-enter { animation: none; } }
+@media print {
+  .hero-with-portrait .hero-inner { padding-top: 0; }
+  .hero-with-portrait .hero-stage { display: grid; }
+  .hero-portrait-image { height: 300px; filter: none; }
+  .hero-portrait-enter { animation: none; }
+}

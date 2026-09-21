@@ -1,0 +1,198 @@
+/* Evidence-led overview, sharing the exhibition's light paper and ink palette. */
+.honors-overview { background: #f0f4f8; border-block: 1px solid #dce4ed; padding-block: 64px 0; }
+.overview-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 30px; }
+.overview-heading .section-kicker { margin-bottom: 17px; }
+.overview-heading h2 { font-size: clamp(32px, 3.5vw, 48px); font-weight: 550; letter-spacing: -1.5px; }
+.overview-heading h2>span { font-size: 18px; font-weight: 400; color: #526a80; letter-spacing: 0; margin-left: 25px; }
+.overview-heading p { color: #52677b; font-size: 16px; line-height: 1.8; margin-top: 12px; }
+.overview-total { display: flex; gap: 10px; align-items: baseline; white-space: nowrap; color: #52677b; font-size: 13px; }
+.overview-total strong { color: #2c4c6c; font-size: 46px; font-weight: 450; font-variant-numeric: tabular-nums; }
+.overview-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.overview-stat { padding: 20px 24px; border: 1px solid #d7e1eb; border-radius: 12px; background: #ffffffd9; position: relative; }
+.overview-stat>span { display: block; font-size: 15px; color: #3b536c; }
+.overview-stat>strong { display: block; color: #305a84; font-size: 46px; line-height: 1.3; font-weight: 450; margin: 5px 0; }
+.overview-stat strong small { font-size: 14px; margin-left: 10px; color: #5f7385; }
+.overview-stat p { font-size: 12px; line-height: 1.8; color: #596f81; }
+.stat-national { background: #edf4ff; border-color: #cddced; }
+.stat-provincial { background: #fbf8f0; border-color: #e4dcc9; }
+.stat-provincial>strong { color: #80612a; }
+.stat-school { background: #f0f7f3; border-color: #d4e3db; }
+.stat-school>strong { color: #326656; }
+.overview-count-note { color: #5c6e80; font-size: 12px; line-height: 1.8; margin: 14px 0 23px; }
+.overview-tools { display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; padding: 18px 0; border-block: 1px solid #d6e0eb; }
+.overview-filters, .overview-years { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; }
+.overview-tools button { min-height: 42px; padding: 9px 13px; border: 1px solid transparent; border-radius: 7px; font-size: 14px; color: #435a71; background: transparent; transition: color .2s, background .2s, border-color .2s; }
+.overview-tools button:hover { background: #e2eaf3; }
+.overview-tools button[aria-pressed="true"] { background: #2b4969; color: #fff; border-color: #2b4969; }
+.overview-years>span { margin-right: 6px; font-size: 12px; color: #596d82; }
+.overview-years button { font-size: 13px; }
+.overview-years button[aria-pressed="true"] { background: #fff; color: #244d78; border-color: #adbed2; }
+.overview-result-line { display: flex; justify-content: space-between; gap: 16px; font-size: 12px; color: #536a7f; margin: 20px 0; line-height: 1.8; }
+.overview-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 20px; animation: overview-appear .25s ease-out; }
+.overview-group { --honor-accent: #3f6899; padding: 27px; border: 1px solid #d6e0ea; border-radius: 14px; background: #fff; min-width: 0; box-shadow: 0 10px 30px #24436204; }
+.overview-group-heading { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-bottom: 22px; margin-bottom: 26px; border-bottom: 1px solid #e2e8ef; }
+.overview-level-en { font-size: 10px; color: #5e7388; letter-spacing: 1.7px; }
+.overview-group-heading h3 { display: flex; gap: 18px; align-items: baseline; margin-top: 12px; }
+.overview-group-heading h3 strong { font-size: 40px; font-weight: 500; color: var(--honor-accent); letter-spacing: 2px; }
+.overview-group-heading h3>span { font-size: 15px; font-weight: 500; color: #3f5367; }
+.overview-group-heading p { font-size: 12px; line-height: 1.8; margin-top: 10px; color: #5d7285; }
+.overview-group-count { font-size: 12px; color: #4f6982; border: 1px solid #dae3ed; background: #f7f9fc; padding: 7px 11px; border-radius: 30px; white-space: nowrap; }
+.overview-timeline { list-style: none; padding: 0; margin: 0; }
+.overview-entry { display: grid; grid-template-columns: 80px 12px minmax(0, 1fr); gap: 15px; padding-bottom: 26px; position: relative; }
+.overview-entry:last-child { padding-bottom: 0; }
+.overview-date { display: flex; flex-direction: column; gap: 8px; padding-top: 2px; }
+.overview-date time { color: #304e70; font-size: 18px; font-weight: 600; font-variant-numeric: tabular-nums; letter-spacing: -.6px; }
+.overview-date>span { font-size: 11px; line-height: 1.6; color: #5c7287; }
+.overview-node { position: relative; margin-top: 10px; width: 9px; height: 9px; background: var(--honor-accent); border-radius: 50%; box-shadow: 0 0 0 4px #f0f4f8; }
+.overview-entry:not(:last-child)::after { content: ''; position: absolute; left: 99px; top: 26px; bottom: -4px; width: 1px; background: #dde6ee; }
+.overview-entry-copy { min-width: 0; }
+.overview-entry-level { color: var(--honor-accent); font-size: 11px; line-height: 1.8; }
+.overview-entry h4 { font-size: 17px; line-height: 1.6; font-weight: 600; margin: 4px 0 8px; overflow-wrap: anywhere; }
+.overview-entry-copy>p { font-size: 14px; line-height: 1.9; color: #4c6379; }
+.overview-context { display: block; font-size: 11px; line-height: 1.8; color: #657488; margin-top: 7px; }
+.overview-entry-actions { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 6px; }
+.overview-entry-actions button, .overview-entry-actions a { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; min-height: 36px; color: #315c89; }
+.overview-entry-actions button:hover, .overview-entry-actions a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.level-national { background: linear-gradient(160deg, #f6f9ff, #fff 38%); }
+.level-provincial { --honor-accent: #80602c; }
+.level-school { --honor-accent: #326756; }
+.level-other { --honor-accent: #5d6281; }
+.level-national-ranking { --honor-accent: #345b7d; grid-column: 1/-1; display: grid; grid-template-columns: .8fr 1fr 1.5fr; align-items: center; gap: 30px; background: linear-gradient(115deg, #edf4fc, #fff); }
+.level-national-ranking .overview-group-heading { border: 0; padding: 0; margin: 0; }
+.level-national-ranking .overview-group-count { display: none; }
+.overview-rank { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 5px 16px; }
+.overview-rank>span { font-size: 12px; line-height: 1.8; color: #4d6882; }
+.overview-rank>span:last-child { grid-column: 1/-1; }
+.overview-rank>strong { font-size: 94px; letter-spacing: -7px; color: #325c86; font-weight: 450; line-height: 1.1; }
+.overview-rank small { font-size: 16px; letter-spacing: 0; margin-left: 9px; }
+.level-national-ranking .overview-entry { grid-template-columns: minmax(0,1fr); gap: 10px; }
+.level-national-ranking .overview-date { flex-direction: row; align-items: center; gap: 12px; }
+.level-national-ranking .overview-node { display: none; }
+.overview-empty { text-align: center; padding: 50px 20px; border: 1px dashed #bdccdc; border-radius: 12px; }
+.overview-empty h3 { font-size: 20px; }
+.overview-empty p { color: #556e86; margin: 15px 0 25px; font-size: 15px; }
+.honors-overview .chapter-transition { margin-top: 35px; }
+.achievement-detail { scroll-margin-top: 120px; }
+.achievement-date { display: inline-flex; align-items: center; flex-wrap: wrap; gap: 9px; border: 1px solid #d1dfec; background: #eef4fb; border-radius: 7px; padding: 9px 12px; margin-top: 15px; text-align: left; line-height: 1.6; }
+.achievement-date>span { color: #47617b; font-size: 12px; font-weight: 400; }
+.achievement-date>time { color: #244869; font-size: 18px; font-weight: 550; font-variant-numeric: tabular-nums; }
+.achievement-significance { font-size: 15px; color: #4b647a; line-height: 1.9; margin-top: 14px; }
+.achievement-context { display: block; font-size: 12px; color: #5d7186; line-height: 1.8; margin-top: 10px; }
+.google-proof-meta>.achievement-date { margin: 0; gap: 6px; }
+.google-proof-meta .achievement-date>span { font-size: 12px; }
+.google-proof-meta .achievement-date>time { font-size: 18px; }
+.cve-card>.achievement-date { margin-top: 0; }
+.cve-card>.achievement-significance { font-size: 14px; margin-bottom: 18px; }
+.other-honor-copy>.achievement-date { margin: 13px 0 5px; }
+.other-honor-copy p.achievement-significance { display: block; font-size: 14px; line-height: 1.9; margin-top: 12px; }
+.register-title>.achievement-date { display: flex; width: fit-content; margin-top: 8px; }
+.register-significance { display: block; max-width: 620px; font-size: 13px; color: #536e84; line-height: 1.8; font-weight: 400; margin-top: 10px; }
+.register-row { grid-template-columns: 85px minmax(0,1fr) 180px 50px 17px; align-items: center; }
+.archive-card-date { flex-wrap: wrap; gap: 12px; }
+.archive-card-date .achievement-date { margin: 0; }
+.archive-card-date .achievement-date>time { font-size: 17px; }
+.viewer-details .viewer-date { padding: 14px; border: 1px solid #cbdaea; border-radius: 8px; background: #edf4fb; }
+.viewer-details .viewer-date dt { font-size: 13px; }
+.viewer-details .viewer-date dd { font-size: 20px; color: #274b71; }
+.viewer-details dl dd { overflow-wrap: anywhere; }
+.nav-links { gap: 16px; }
+.nav-links a[href="#overview"] { font-weight: 650; color: #205ca9; }
+@keyframes overview-appear { from { opacity: .4; transform: translateY(5px); } to { opacity: 1; transform: none; } }
+@media (max-width: 1100px) {
+  .overview-group { padding: 22px; }
+  .overview-entry { grid-template-columns: 73px 9px minmax(0,1fr); gap: 10px; }
+  .overview-entry:not(:last-child)::after { left: 87px; }
+  .overview-group-heading h3 { flex-direction: column; gap: 5px; }
+  .overview-stat { padding: 18px; }
+  .level-national-ranking { grid-template-columns: .8fr 1fr 1.5fr; gap: 20px; }
+  .overview-rank { grid-template-columns: 1fr; }
+  .nav-links { gap: 12px; }
+}
+@media (max-width: 800px) {
+  .honors-overview { padding-top: 45px; padding-bottom: 0; }
+  .overview-heading h2>span { display: block; margin: 12px 0 0; font-size: 16px; }
+  .overview-grid { grid-template-columns: 1fr; }
+  .overview-group-heading h3 { flex-direction: row; gap: 16px; }
+  .overview-stats { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .overview-tools { gap: 12px; }
+  .overview-group { padding: 26px; }
+  .overview-entry { grid-template-columns: 86px 12px minmax(0,1fr); gap: 16px; }
+  .overview-entry:not(:last-child)::after { left: 106px; }
+  .level-national-ranking { grid-template-columns: 1fr 1fr; }
+  .level-national-ranking .overview-timeline { grid-column: 1/-1; }
+  .overview-rank { grid-template-columns: auto 1fr; }
+  .register-row { grid-template-columns: 70px minmax(0,1fr) 45px 17px; }
+  .register-row .register-id { grid-column: 2; grid-row: 2; }
+  .register-row>.severity { grid-column: 3; grid-row: 1; }
+  .register-row>svg { grid-column: 4; grid-row: 1; }
+}
+@media (max-width: 650px) {
+  .hero-stage { min-height: 0; gap: 22px; padding-top: 20px; }
+  .hero-feature { padding: 18px 22px; }
+  .hero-feature-top, .hero-feature>p, .hero-feature-english { display: none; }
+  .hero-feature-brand { font-size: 48px; letter-spacing: -2px; margin-top: 0; }
+  .hero-feature>strong { font-size: 19px; margin-top: 6px; }
+  .hero-feature-bottom { margin-top: 13px; padding-top: 12px; }
+  .hero-metrics { grid-template-columns: repeat(4,minmax(0,1fr)); gap: 8px; margin-top: 12px; }
+  .hero-metric:first-child { display: none; }
+  .hero-metric { padding-block: 16px; }
+  .hero-metrics .metric-number { font-size: 30px; }
+  .hero-metrics .metric-chinese { font-size: 23px; letter-spacing: 2px; }
+  .hero-metrics .metric-label { font-size: 10px; line-height: 1.6; }
+  .hero-metrics .metric-note { display: none; }
+  .overview-heading { align-items: center; gap: 10px; }
+  .overview-heading h2 { font-size: 32px; }
+  .overview-heading h2>span { font-size: 13px; }
+  .overview-heading p { font-size: 14px; }
+  .overview-total { flex-direction: column; gap: 5px; font-size: 11px; }
+  .overview-total strong { font-size: 37px; }
+  .overview-heading .eyebrow { font-size: 9px; letter-spacing: .7px; }
+  .overview-stat { padding: 16px; }
+  .overview-stat>span { font-size: 13px; }
+  .overview-stat>strong { font-size: 36px; }
+  .overview-stat p { font-size: 11px; }
+  .overview-count-note { font-size: 11px; }
+  .overview-tools button { padding: 8px 11px; font-size: 13px; }
+  .overview-result-line { flex-direction: column; gap: 3px; }
+  .overview-group { padding: 21px 16px; }
+  .overview-group-heading { gap: 10px; }
+  .overview-group-heading h3 { gap: 12px; }
+  .overview-group-heading h3 strong { font-size: 32px; }
+  .overview-group-heading h3>span { font-size: 13px; }
+  .overview-group-count { font-size: 11px; padding: 5px 8px; }
+  .overview-entry { grid-template-columns: 1px minmax(0,1fr); gap: 0 17px; padding-left: 1px; padding-bottom: 26px; }
+  .overview-date { grid-column: 2; flex-direction: row; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .overview-node { grid-column: 1; grid-row: 1; margin-left: -4px; margin-top: 10px; }
+  .overview-entry-copy { grid-column: 2; }
+  .overview-entry:not(:last-child)::after { left: 1px; top: 26px; bottom: -4px; }
+  .overview-date time { font-size: 18px; }
+  .overview-entry h4 { font-size: 17px; }
+  .overview-entry-copy>p { font-size: 14px; }
+  .overview-entry-actions button, .overview-entry-actions a { min-height: 44px; font-size: 13px; }
+  .level-national-ranking { display: block; }
+  .level-national-ranking .overview-group-heading { margin-bottom: 20px; }
+  .overview-rank { grid-template-columns: 1fr 1fr; padding-block: 5px 22px; }
+  .overview-rank>strong { font-size: 110px; }
+  .level-national-ranking .overview-entry { display: block; padding: 0; }
+  .level-national-ranking .overview-date { margin-bottom: 10px; }
+  .register-row { grid-template-columns: minmax(0,1fr) 42px 17px; gap: 10px; }
+  .register-row .register-platform { grid-column: 1; grid-row: 1; }
+  .register-row .register-title { grid-column: 1/-1; grid-row: 2; font-size: 15px; }
+  .register-row .register-id { grid-column: 1/-1; grid-row: 3; font-size: 11px; }
+  .register-row>.severity { grid-column: 2; grid-row: 1; }
+  .register-row>svg { grid-column: 3; grid-row: 1; }
+  .achievement-date>time, .google-proof-meta .achievement-date>time { font-size: 17px; }
+  .google-proof-meta { flex-wrap: wrap; gap: 15px; }
+  .competition-copy>p.achievement-significance { font-size: 14px; }
+  .other-honor-copy>.eyebrow { font-size: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .overview-grid { animation: none; }
+  .overview-tools button { transition: none; }
+}
+@media print {
+  .overview-tools, .overview-entry-actions { display: none; }
+  .overview-grid { display: block; }
+  .overview-group { break-inside: avoid; margin-bottom: 20px; }
+  .honors-overview { background: white; }
+}

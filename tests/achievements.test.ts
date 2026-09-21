@@ -1,0 +1,62 @@
+import assert from 'node:assert/strict';
+import test from 'node:test';
+import { achievements, achievementById, achievementYears, filterAchievements, levelCounts, sortAchievements } from '../data/achievements';
+import { dateText, dateParts, dateStamp } from '../data/achievement-dates';
+import { evidence } from '../data/evidence';
+
+// Independently transcribed from the original files; see docs/ACHIEVEMENT_DATE_AUDIT.md.
+const verifiedDates: Record<string, string> = {
+  google: '2026-04-08', pku: '2026-04-23', edusrc: '2026-05',
+  'cnnvd-18260050': '2026-09-03', 'cnvd-20319': '2026-05-02', 'cnvd-20312': '2026-05-02', 'cnvd-30548': '2026-07-28',
+  'cve-10292': '2026-06-01', 'cve-10293': '2026-06-01', 'cve-87924': '2026-09-09', 'cve-87925': '2026-09-09',
+  raicom: '2026-07-28', 'challenge-care': '2026-04', 'challenge-security': '2026-04', social: '2025', training: '2025-05-27',
+};
+
+test('all awarded records match verified source precision and have auditable classifications', () => {
+  assert.equal(achievements.length, Object.keys(verifiedDates).length);
+  assert.deepEqual(achievements.map(a => a.id).sort(), evidence.filter(e => e.status === 'documented').map(e => e.id).sort());
+  for (const item of achievements) {
+    assert.equal(item.date, verifiedDates[item.id], item.id);
+    assert.equal(item.evidence.date, item.date);
+    assert.ok(item.dateEvidence && item.levelEvidence && item.significance && item.organization && item.certificate, item.id);
+  }
+  assert.deepEqual(levelCounts, { international: 5, national: 4, 'national-ranking': 1, provincial: 2, school: 3, other: 1 });
+  assert.deepEqual(achievementYears, [2026, 2025]);
+  assert.equal(achievementById['edusrc-pending'], undefined);
+});
+
+test('partial dates never fabricate months or days', () => {
+  assert.equal(dateText(null), '时间待补充');
+  assert.equal(dateStamp(null), '时间待补充');
+  assert.deepEqual(dateParts(null), { year: null, month: null, day: null });
+  assert.deepEqual(dateParts('2025'), { year: 2025, month: null, day: null });
+  assert.equal(dateText('2025', true), '2025年');
+  assert.equal(dateText('2026-04', true), '2026年4月');
+  assert.equal(dateText('2026-04-08'), '2026年4月');
+  assert.equal(dateText('2026-04-08', true), '2026年4月8日');
+  assert.equal(dateStamp('2026-04-08'), '2026.04');
+  assert.equal(achievementById.social.month, null);
+  assert.equal(achievementById['challenge-care'].day, null);
+  assert.deepEqual(achievementById.social.relatedDates, [{ label: '校方报道时间', date: '2025-12-23' }]);
+  assert.equal(achievementById['cnnvd-18260050'].dateLabel, '证明出具时间');
+  assert.deepEqual(achievementById['cnnvd-18260050'].relatedDates, [{ label: '漏洞提交时间', date: '2026-08-25' }]);
+});
+
+test('filters keep professional ranking and online coursework out of administrative award levels', () => {
+  const ids = (filter: Parameters<typeof filterAchievements>[0], year: number | null = null) => filterAchievements(filter, year).map(a => a.id);
+  assert.deepEqual(ids('international'), ['cve-87924', 'cve-87925', 'cve-10292', 'cve-10293', 'google']);
+  assert.deepEqual(ids('national'), ['cnnvd-18260050', 'cnvd-30548', 'cnvd-20319', 'cnvd-20312']);
+  assert.deepEqual(ids('provincial'), ['raicom', 'social']);
+  assert.deepEqual(ids('school'), ['challenge-care', 'challenge-security', 'training']);
+  assert.deepEqual(ids('competition'), ['raicom', 'challenge-care', 'challenge-security']);
+  assert.deepEqual(ids('social-practice'), ['social']);
+  assert.equal(ids('technology').length, 9);
+  assert.ok(ids('technology').includes('edusrc'));
+  assert.deepEqual(ids('all', 2025), ['social', 'training']);
+  assert.deepEqual(ids('international', 2025), []);
+});
+
+test('unknown dates sort last within a level and cannot be assigned to a year', () => {
+  const unknown = { ...achievementById.google, id: 'no-date', date: null, year: null, month: null, day: null };
+  assert.equal(sortAchievements([unknown, achievementById.google]).at(-1)?.id, 'no-date');
+});

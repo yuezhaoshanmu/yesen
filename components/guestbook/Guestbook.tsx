@@ -195,7 +195,7 @@ export default function Guestbook() {
       <div className="container">
         <div className="gb-heading">
           <SectionHeading
-            index="11"
+            index="10"
             eyebrow="VISITOR WALL"
             title={
               <>
