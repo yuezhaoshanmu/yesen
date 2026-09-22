@@ -4,6 +4,10 @@ import './guestbook.css';
 import './exhibition.css';
 import './achievements.css';
 import './reading.css';
+import './particles.css';
+import './atelier.css';
+import './direction-v2.css';
+import './flagship.css';
 
 export const metadata: Metadata = {
   title: '叶森 YESEN — 个人技术成果与荣誉档案',
@@ -14,7 +18,7 @@ export const metadata: Metadata = {
   twitter: {card:'summary_large_image',title:'叶森 — 个人技术成果与荣誉档案',images:['/og-image.jpg']},
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
 };
-export const viewport: Viewport = {width:'device-width',initialScale:1,themeColor:'#f7f9fb'};
+export const viewport: Viewport = {width:'device-width',initialScale:1,themeColor:'#f4f7f6'};
 export default function RootLayout({children}:{children:React.ReactNode}) {
   return <html lang="zh-CN"><body><a className="skip-link" href="#main">跳至正文</a>{children}</body></html>;
 }

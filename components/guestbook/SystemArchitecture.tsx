@@ -1,13 +1,9 @@
 "use client";
+import SystemDataFlow from "@/components/effects/SystemDataFlow";
 import { useRef } from "react";
 import {
-  ArrowDown,
   ArrowUpRight,
   X,
-  ShieldCheck,
-  Database,
-  Radio,
-  Globe,
 } from "lucide-react";
 import { trapDialogTab } from "@/lib/guestbook/client";
 
@@ -46,31 +42,7 @@ export default function SystemArchitecture() {
             Behind This Page<span>.</span>
           </h2>
           <p>你写下一句话。另一块屏幕，同时收到。</p>
-          <div className="gb-flow">
-            <div>
-              <Globe size={20} />
-              <strong>Browser</strong>
-              <small>写下留言 · 无需登录</small>
-            </div>
-            <ArrowDown size={17} />
-            <div>
-              <ShieldCheck size={20} />
-              <strong>Next.js · Server API</strong>
-              <small>输入验证 / 限流 / 权限校验</small>
-            </div>
-            <ArrowDown size={17} />
-            <div>
-              <Database size={20} />
-              <strong>Supabase PostgreSQL</strong>
-              <small>持久化存储 / RLS 最小权限</small>
-            </div>
-            <ArrowDown size={17} />
-            <div>
-              <Radio size={20} />
-              <strong>Realtime → All Clients</strong>
-              <small>留言、点赞与回复，即时同步</small>
-            </div>
-          </div>
+          <SystemDataFlow architecture />
           <div className="gb-architecture-tags">
             {[
               "PostgreSQL",

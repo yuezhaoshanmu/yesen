@@ -14,16 +14,24 @@
     "test:guestbook": "tsx --test tests/guestbook.test.ts",
     "test:guestbook:http": "node scripts/guestbook-http-qa.mjs",
     "test:guestbook:live": "node scripts/guestbook-live-qa.mjs",
-    "test:guestbook:ui": "node scripts/guestbook-ui-qa.mjs"
+    "test:guestbook:ui": "node scripts/guestbook-ui-qa.mjs",
+    "test:particles": "tsx --test tests/particles.test.ts",
+    "test:particles:ui": "node scripts/particles-ui-qa.cjs",
+    "test:particles:realtime": "node scripts/particles-realtime-qa.cjs",
+    "test:particles:performance": "node scripts/particles-performance-qa.cjs",
+    "prebuild": "npm run check:data && npm run test:achievements",
+    "test:flagship": "node scripts/flagship-ui-qa.cjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",
     "@supabase/supabase-js": "^2.116.0",
+    "gsap": "^3.15.0",
     "lucide-react": "^0.577.0",
     "next": "^15.5.12",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "server-only": "^0.0.1",
+    "three": "^0.186.0",
     "zod": "^4.6.5"
   },
   "devDependencies": {
@@ -33,6 +41,7 @@
     "@types/node": "^22.15.0",
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.0",
+    "@types/three": "^0.186.0",
     "eslint": "^9.39.0",
     "eslint-config-next": "^15.5.12",
     "lighthouse": "^13.5.0",

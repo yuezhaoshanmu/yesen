@@ -13,5 +13,5 @@ export function Exhibition({children}:{children:ReactNode}) {
 }
 export function EvidenceButton({id,children,className='',label}:{id:string;children:ReactNode;className?:string;label?:string}) {
   const open=useContext(EvidenceContext);
-  return <button type="button" className={className} onClick={event=>open(id,event.currentTarget)} aria-label={label}>{children}</button>;
+  return <button type="button" data-particle-cta className={className} onClick={event=>open(id,event.currentTarget)} aria-label={label}>{children}</button>;
 }

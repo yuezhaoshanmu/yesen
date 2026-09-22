@@ -1,16 +1,9 @@
 import { Exhibition } from '@/components/Exhibition';
-import Navbar from '@/components/Navbar';
-import Hero from '@/components/Hero';
-import AchievementOverview from '@/components/AchievementOverview';
-import CybersecuritySection from '@/components/CybersecuritySection';
-import CveSection from '@/components/CveSection';
-import GoogleCertification from '@/components/GoogleCertification';
-import EduSrcSection from '@/components/EduSrcSection';
-import Projects from '@/components/Projects';
-import CompetitionSection from '@/components/CompetitionSection';
-import OtherHonors from '@/components/OtherHonors';
-import Footer from '@/components/Footer';
-import MotionSystem from '@/components/MotionSystem';
+import Navigation from '@/components/atelier/Navigation';
+import { HeroScene, HonorIndex, GoogleScene, EduScene, NationalScene, GlobalScene, AwardScene, ArchiveScene, AcademicScene, ProjectScenes, EndingScene } from '@/components/atelier/Scenes';
+import SceneMotion from '@/components/atelier/SceneMotion';
 import Guestbook from '@/components/guestbook/Guestbook';
 
-export default function Home(){return <Exhibition><Navbar/><main id="main"><Hero/><AchievementOverview/><GoogleCertification/><EduSrcSection/><CybersecuritySection/><CveSection/><CompetitionSection/><OtherHonors/><Projects/><Guestbook/></main><Footer/><MotionSystem/></Exhibition>;}
+export default function Home() {
+  return <Exhibition><div className="atelier"><Navigation /><main id="main"><HeroScene /><AcademicScene /><HonorIndex /><GoogleScene /><EduScene /><NationalScene /><GlobalScene /><AwardScene /><ArchiveScene /><ProjectScenes /><Guestbook /></main><EndingScene /><SceneMotion /></div></Exhibition>;
+}

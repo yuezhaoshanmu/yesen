@@ -1,3 +1,4 @@
+import SectionParticleEffect from './effects/SectionParticleEffect';
 import AchievementDate from './AchievementDate';
 import { achievementById } from '@/data/achievements';
 import Image from 'next/image';
@@ -33,7 +34,7 @@ export default function GoogleCertification() {
             {item.verificationUrl && <a href={item.verificationUrl} target="_blank" rel="noopener noreferrer" className="text-button">官方验证<ArrowUpRight size={16}/></a>}
           </div>
         </div>
-        <div className="google-proof" data-reveal>
+        <div className="google-proof" data-reveal><SectionParticleEffect kind="credential"/>
           <div className="google-proof-caption"><span>专业学习，有据可查。</span><span className="micro">GOOGLE · COURSERA</span></div>
           <EvidenceButton id="google" className="google-certificate" label="打开 Google 网络安全专业认证高清证书">
             <Image src={item.preview} width={item.width} height={item.height} alt="Google 网络安全专业职业认证完整证书，含九门课程及官方验证地址" sizes="(max-width: 800px) 90vw, 46vw"/>

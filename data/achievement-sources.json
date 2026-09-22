@@ -1,0 +1,254 @@
+[
+  {
+    "file": "12055ac598127605a163182b9c8348a1.png",
+    "sha256": "70ca26a41c42d41d30c2cd0a1d03e32612be9df1ff56d03deee0da48110313f6",
+    "achievementIds": [],
+    "disposition": "portrait"
+  },
+  {
+    "file": "CNNVD-2026-18260050.pdf",
+    "sha256": "98abec4f477f054b628ec09110cea5835ee7024457e573473159b5912ba62b17",
+    "achievementIds": [
+      "cnnvd-18260050"
+    ],
+    "disposition": "achievement"
+  },
+  {
+    "file": "CNVD-YCGW-202605069184.pdf",
+    "sha256": "272a0f38b2c7bb08d62fdbd4f24fbcd7e410bcb64e12ecaa4a270c4eca3c7715",
+    "achievementIds": [
+      "cnvd-20319"
+    ],
+    "disposition": "achievement"
+  },
+  {
+    "file": "CNVD-YCGW-202605069881.pdf",
+    "sha256": "2429923c3ac03656304531c9c8a0f05c735825cf65c7e74a26968153b647bbfb",
+    "achievementIds": [
+      "cnvd-20312"
+    ],
+    "disposition": "achievement"
+  },
+  {
+    "file": "CNVD-YCGW-202607049250.pdf",
+    "sha256": "fd83f6bb63377463efceb2c5de0e7f842c59c33e548b1de28a7a5f92a798270d",
+    "achievementIds": [
+      "cnvd-30548"
+    ],
+    "disposition": "achievement"
+  },
+  {
+    "file": "CVE-2026-10292.pdf",
+    "sha256": "6dd0f68852e96c8ef5c60f76261cbfe022854180b683320b0feaa0cbe47976f6",
+    "achievementIds": [
+      "cve-10292"
+    ],
+    "disposition": "achievement"
+  },
+  {
+    "file": "CVE-2026-10293.pdf",
+    "sha256": "4a7dc497638d614a8acdde31a028034d6fa026e480d1999a3da3f3d6116ab723",
+    "achievementIds": [
+      "cve-10293"
+    ],
+    "disposition": "achievement"
+  },
+  {
+    "file": "北大认证.pdf",
+    "sha256": "6c3089e4dd35ae6760ccfb2799194160ef88f2ba72695d743ad20de2b743a103",
+    "achievementIds": [
+      "pku"
+    ],
+    "disposition": "achievement"
+  },
+  {
+    "file": "叶森获奖情况.docx",
+    "sha256": "3ae1479fbb0fd8ff75b12d0d1f686178a6fe8de46a73ace1397ae191101cddb0",
+    "achievementIds": [],
+    "disposition": "document-container"
+  },
+  {
+    "file": "叶森获奖情况.docx",
+    "member": "word/media/image1.png",
+    "sha256": "af9e468818881b004697a04ebdc07488766087154869485049e006087161beb1",
+    "achievementIds": [
+      "google"
+    ],
+    "evidenceId": "google",
+    "disposition": "achievement"
+  },
+  {
+    "file": "叶森获奖情况.docx",
+    "member": "word/media/image2.png",
+    "sha256": "dd9fc612a2ef869c047d9b6820dcbec17deaccab8ce3fec38dc10ccb15acc1bc",
+    "achievementIds": [
+      "challenge-care"
+    ],
+    "evidenceId": "challenge-care",
+    "disposition": "achievement"
+  },
+  {
+    "file": "叶森获奖情况.docx",
+    "member": "word/media/image3.png",
+    "sha256": "9e90294fc7b1a9cfd4773c236b70db476ee4246be32fcb3574be6fe10245e94c",
+    "achievementIds": [
+      "challenge-security"
+    ],
+    "evidenceId": "challenge-security",
+    "disposition": "achievement"
+  },
+  {
+    "file": "叶森获奖情况.docx",
+    "member": "word/media/image4.png",
+    "sha256": "e317007351e7de8c5e0f2577fe1309f372f193849bdc31717865966190ce6a1e",
+    "achievementIds": [
+      "training"
+    ],
+    "evidenceId": "training",
+    "disposition": "achievement"
+  },
+  {
+    "file": "叶森获奖情况.docx",
+    "member": "word/media/image5.png",
+    "sha256": "c5072cd243d6e94cea0b843fab136b61c0c43c27ff34bd1975742ed65f099a88",
+    "achievementIds": [
+      "social"
+    ],
+    "evidenceId": "social",
+    "disposition": "achievement"
+  },
+  {
+    "file": "叶森获奖情况.docx",
+    "member": "word/media/image6.png",
+    "sha256": "18cc032edb3edf24ad2b7f40ed43c82489af5ec7d981551942476d263da622db",
+    "achievementIds": [
+      "cnnvd-18260050"
+    ],
+    "evidenceId": "cnnvd-18260050",
+    "disposition": "achievement"
+  },
+  {
+    "file": "叶森获奖情况.docx",
+    "member": "word/media/image7.png",
+    "sha256": "65ae14c5f694dc6507121b99fa38f8e6600dd5283b2832a59fb178c37e4b32a6",
+    "achievementIds": [
+      "cnvd-20319"
+    ],
+    "evidenceId": "cnvd-20319",
+    "disposition": "achievement"
+  },
+  {
+    "file": "叶森获奖情况.docx",
+    "member": "word/media/image11.png",
+    "sha256": "41c6ac90379bedfca3195e0a1e70b63e216405bde35ec6efc22aea640da730c0",
+    "achievementIds": [],
+    "evidenceId": "edusrc-pending",
+    "disposition": "pending"
+  },
+  {
+    "file": "叶森获奖情况.docx",
+    "member": "word/media/image12.png",
+    "sha256": "9ac1c1d97c639ebe723894322c099cdcea6cd3d709932ec2604ecf4407f8bd79",
+    "achievementIds": [
+      "edusrc"
+    ],
+    "evidenceId": "edusrc",
+    "disposition": "achievement"
+  },
+  {
+    "file": "叶森获奖情况.docx",
+    "member": "word/media/image13.png",
+    "sha256": "6782ad66d3a4ceef5097eb1dd992dcfdbf670d9928c5be45d016936811971dfc",
+    "achievementIds": [
+      "cve-10292"
+    ],
+    "evidenceId": "cve-10292",
+    "disposition": "achievement"
+  },
+  {
+    "file": "叶森获奖情况.docx",
+    "member": "word/media/image14.png",
+    "sha256": "af5ed1bfc06b21353c6442ac303791127da5916105c2fc5d3ebd2d5f6c372dd1",
+    "achievementIds": [
+      "cve-10293"
+    ],
+    "evidenceId": "cve-10293",
+    "disposition": "achievement"
+  },
+  {
+    "file": "叶森获奖情况.docx",
+    "member": "word/media/image15.png",
+    "sha256": "c733d93e9947ffbf7e638c54ecf300ff53561f3b354e7774ef74ef12e61379c3",
+    "achievementIds": [
+      "cve-87924"
+    ],
+    "evidenceId": "cve-87924",
+    "disposition": "achievement"
+  },
+  {
+    "file": "叶森获奖情况.docx",
+    "member": "word/media/image16.png",
+    "sha256": "38874007589503a31f08a2f287192bc2de23f7094937396e4e036e1550952fde",
+    "achievementIds": [
+      "cve-87925"
+    ],
+    "evidenceId": "cve-87925",
+    "disposition": "achievement"
+  },
+  {
+    "file": "叶森获奖情况.docx",
+    "member": "word/media/image17.png",
+    "sha256": "fab9c6c080d432b3af629eaf715728281daae4c09c8f34506f60bf1e3284185c",
+    "achievementIds": [
+      "raicom"
+    ],
+    "evidenceId": "raicom",
+    "disposition": "achievement"
+  },
+  {
+    "file": "叶森获奖情况.docx",
+    "member": "word/media/image18.jpeg",
+    "sha256": "cfd5a3365a62c32c75daf44cd5966a69a57b218cdca7f374af83ac05a3723526",
+    "achievementIds": [],
+    "evidenceId": null,
+    "disposition": "portfolio-qr"
+  },
+  {
+    "file": "叶森获奖情况.docx",
+    "member": "word/media/image8.png",
+    "sha256": "4ec1b84ee3788ce64b01356cef79d99bd2a89ff7e5c3548a2db3b13483057dc3",
+    "achievementIds": [
+      "cnvd-20312"
+    ],
+    "evidenceId": "cnvd-20312",
+    "disposition": "achievement"
+  },
+  {
+    "file": "叶森获奖情况.docx",
+    "member": "word/media/image10.png",
+    "sha256": "f2b6abf1979bf5b9203a61ae6a7072317a38b60d97d8bbc82e47e1f8a671f77d",
+    "achievementIds": [
+      "pku"
+    ],
+    "evidenceId": "pku",
+    "disposition": "achievement"
+  },
+  {
+    "file": "叶森获奖情况.docx",
+    "member": "word/media/image9.png",
+    "sha256": "03a2b3b519125e481e38f470448c0854b511cb39e73a239c37b457665761fe8c",
+    "achievementIds": [
+      "cnvd-30548"
+    ],
+    "evidenceId": "cnvd-30548",
+    "disposition": "achievement"
+  },
+  {
+    "file": "谷歌网络安全认证.pdf",
+    "sha256": "959f78c8d7b10cdc4fe9b1cdc1cb9461ee6a956b5db48d9b96cd3318f2ce2158",
+    "achievementIds": [
+      "google"
+    ],
+    "disposition": "achievement"
+  }
+]

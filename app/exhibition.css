@@ -208,6 +208,8 @@ details[open]>summary svg { transform: rotate(180deg); }
 .project-details p, .project-eyebrow>span:last-child, .project-tags span, .project-link, .project-link>span { color: #526a80; }
 .project-tags span { border-color: #d8e2ea; background: #f3f6f9; }
 .browser-chrome { color: #51667b; background: #fff; border-color: #dce3e9; }
+.sand .browser-chrome { color: var(--secondary); }
+.gb-composer-bottom > .mono > span { opacity: 1; }
 .project-visual { background: #e7eef4; }
 .project-card.sage .project-visual { background: #eaf2ed; }
 .project-card.sand .project-visual { background: #f1eee6; }

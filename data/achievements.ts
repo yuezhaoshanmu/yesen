@@ -1,5 +1,29 @@
-import { evidence, evidenceById, type Evidence } from './evidence';
+import assets from './assets.json';
+import type { Evidence } from './evidence-types';
 import { dateParts, dateText, dateStamp } from './achievement-dates';
+
+type Entry = Omit<Evidence, keyof (typeof assets)[keyof typeof assets]>;
+const entries: Entry[] = [
+  { id:'cnvd-20319', certificateNumber: 'CNVD-YCGW-202605069184', title:'北京金和网络股份有限公司金和OA存在SQL注入漏洞（CNVD-C-2026-195040）', category:'国家平台', issuer:'国家信息安全漏洞共享平台（CNVD）', date:'2026-05-02', dateLabel:'漏洞收录时间', identifier:'CNVD-2026-20319', level:'高危', status:'documented', description:'原创漏洞证明。贡献者：叶森；贡献者单位：江西科技职业学院。', note:'证书编号：CNVD-YCGW-202605069184。落款：中国互联网协会网络与信息安全工作委员会、国家互联网应急中心（CNCERT）。' },
+  { id:'cnvd-20312', certificateNumber: 'CNVD-YCGW-202605069881', title:'北京神州视翰科技有限公司多媒体综合业务显示系统存在SQL注入漏洞（CNVD-C-2026-195041）', category:'国家平台', issuer:'国家信息安全漏洞共享平台（CNVD）', date:'2026-05-02', dateLabel:'漏洞收录时间', identifier:'CNVD-2026-20312', level:'高危', status:'documented', description:'北京神州视翰科技有限公司多媒体综合业务显示系统存在 SQL 注入漏洞。贡献者：叶森。', note:'证书编号：CNVD-YCGW-202605069881。贡献者单位：江西科技职业学院。落款：中国互联网协会网络与信息安全工作委员会、国家互联网应急中心（CNCERT）。' },
+  { id:'cnvd-30548', certificateNumber: 'CNVD-YCGW-202607049250', title:'上海卓卓网络科技有限公司DedeCMS存在SQL注入漏洞（CNVD-2026-30548）', category:'国家平台', issuer:'国家信息安全漏洞共享平台（CNVD）', date:'2026-07-28', dateLabel:'漏洞收录时间', identifier:'CNVD-2026-30548', level:'中危', status:'documented', description:'上海卓卓网络科技有限公司 DedeCMS 存在 SQL 注入漏洞。贡献者：叶森。', note:'证书编号：CNVD-YCGW-202607049250。贡献者单位：江西科技职业学院。落款：中国互联网协会网络与信息安全工作委员会、国家互联网应急中心（CNCERT）。' },
+  { id:'cnnvd-18260050', title:'CNNVD 信息安全漏洞提交证明', category:'国家平台', issuer:'中国信息安全测评中心', date:'2026-09-03', dateLabel:'证明出具时间', identifier:'CNNVD-2026-18260050', level:'高危', status:'documented', description:'国家信息安全漏洞库（CNNVD）出具的信息安全漏洞提交证明。提交人：叶森；提交时间：2026-08-25。', note:'证明未载明漏洞名称；以“提交证明”展示，不自行扩展为公开收录公告。' },
+  { id:'cve-10292', cvss: { version: '4.0', score: 8.7, severity: 'HIGH' }, reporter: 'Missa (VulDB User)', technicalTitle: 'UTT HiPER 1200GW · formTaskEdit', title:'UTT HiPER 1200GW 栈缓冲区溢出', category:'国际漏洞', issuer:'CVE Program · CNA: VulDB', date:'2026-06-01', dateLabel:'CVE 发布时间', identifier:'CVE-2026-10292', level:'CVSS 4.0 · 8.7 / 高危', status:'documented', description:'formTaskEdit / strcpy 栈缓冲区溢出。官方记录报告人：Missa (VulDB User)。', verificationUrl:'https://www.cve.org/CVERecord?id=CVE-2026-10292', note:'编号、评分及署名来自原始 PDF 和官网截图。个人归属来自荣誉汇总自述。' },
+  { id:'cve-10293', cvss: { version: '4.0', score: 8.7, severity: 'HIGH' }, reporter: 'Missa (VulDB User)', technicalTitle: 'UTT HiPER 1200GW · formFireWall', title:'UTT HiPER 1200GW 防火墙功能栈溢出', category:'国际漏洞', issuer:'CVE Program · CNA: VulDB', date:'2026-06-01', dateLabel:'CVE 发布时间', identifier:'CVE-2026-10293', level:'CVSS 4.0 · 8.7 / 高危', status:'documented', description:'formFireWall / strcpy 栈缓冲区溢出。官方记录报告人：Missa (VulDB User)。', verificationUrl:'https://www.cve.org/CVERecord?id=CVE-2026-10293', note:'个人归属来自荣誉汇总自述。' },
+  { id:'cve-87924', cvss: { version: '4.0', score: 6.9, severity: 'MEDIUM' }, reporter: 'Missa (VulDB User)', technicalTitle: 'Invoice Generation · Missing Authentication', title:'库存管理系统身份认证缺失', category:'国际漏洞', issuer:'CVE Program · CNA: VulDB', date:'2026-09-09', dateLabel:'CVE 发布时间', identifier:'CVE-2026-87924', level:'CVSS 4.0 · 6.9 / 中危', status:'documented', description:'Rizwan17 inventory-management-system：Invoice Generation / invoice_bill.php 身份认证缺失。报告人：Missa (VulDB User)。', verificationUrl:'https://www.cve.org/CVERecord?id=CVE-2026-87924', note:'编号、评分、日期和署名见汇总文档 image15.png。' },
+  { id:'cve-87925', cvss: { version: '4.0', score: 6.9, severity: 'MEDIUM' }, reporter: 'Missa (VulDB User)', technicalTitle: 'storeCustomerOrderInvoice · SQL Injection', title:'库存管理系统 SQL 注入漏洞', category:'国际漏洞', issuer:'CVE Program · CNA: VulDB', date:'2026-09-09', dateLabel:'CVE 发布时间', identifier:'CVE-2026-87925', level:'CVSS 4.0 · 6.9 / 中危', status:'documented', description:'Rizwan17 inventory-management-system：manage.php / storeCustomerOrderInvoice SQL 注入。报告人：Missa (VulDB User)。', verificationUrl:'https://www.cve.org/CVERecord?id=CVE-2026-87925', note:'统一采用 CVSS 4.0；该记录其他评分版本有不同等级，未混用。' },
+  { id:'google', title:'Google 网络安全专业职业认证', category:'专业认证', issuer:'Google · Coursera', date:'2026-04-08', dateLabel:'认证时间', identifier:'P6KEAPHJ0ZGQ', level:'专业职业认证 · 9 门课程', status:'documented', description:'完成 Google 开发的九门课程及实践评估，覆盖网络安全基础、风险管理、威胁检测与响应，以及入门级 Python、Linux、SQL、SIEM 和 IDS 工具应用。', verificationUrl:'https://coursera.org/verify/professional-cert/P6KEAPHJ0ZGQ', note:'证书姓名显示为“森 叶”。' },
+  { id:'pku', title:'操作系统与虚拟化安全', category:'专业认证', issuer:'北京大学 · Coursera', date:'2026-04-23', dateLabel:'认证时间', identifier:'3DPBXPZ2D92U', level:'在线课程认证', status:'documented', description:'完成北京大学授权的《操作系统与虚拟化安全》在线课程及相关考核，积累系统安全知识。', verificationUrl:'https://coursera.org/verify/3DPBXPZ2D92U', note:'证书姓名显示为“森 叶”。' },
+  { id:'edusrc', title:'EDUSRC 2026 年 5 月白帽榜第 24 名', category:'安全实践', issuer:'教育漏洞报告平台（EDUSRC）', date:'2026-05', dateLabel:'榜单时间', level:'全国月度白帽榜 · 第 24 名', status:'documented', description:'截图显示 2026 年 5 月榜单中，昵称“叶森”列于第 24 位，Rank 值为 100。', note:'只证明所提供截图中的月度排名，不等同于历史总榜、实时排名或全年排名。' },
+  { id:'raicom', title:'睿抗机器人开发者大赛江西赛区一等奖', category:'竞赛荣誉', issuer:'工业和信息化部人才交流中心', date:'2026-07-28', dateLabel:'获奖时间', identifier:'IITCHJRAIC26008150', level:'江西赛区 · AI 视觉应用 · 一等奖', status:'documented', description:'2026 睿抗机器人开发者大赛（RAICOM）江西赛区 AI 视觉应用竞赛项目一等奖。团队成员：杨燕青、叶森、肖文浩；指导老师：杨祖威、廖世达。' },
+  { id:'challenge-care', title:'“挑战杯”校级决赛优秀奖 · 颐护家', category:'竞赛荣誉', issuer:'共青团江西科技职业学院委员会', date:'2026-04', dateLabel:'获奖时间', level:'校级决赛 · 优秀奖', status:'documented', description:'2026 年第十五届“挑战杯”江西省大学生创业计划竞赛校级决赛；项目：颐护家——社区居家老年上门护理服务。证书团队成员含叶森。', note:'原始证书写“挑战杯”，并非“挑战者杯”；赛事范围为校级决赛。' },
+  { id:'challenge-security', title:'“挑战杯”校级决赛优秀奖 · 安帼', category:'竞赛荣誉', issuer:'共青团江西科技职业学院委员会', date:'2026-04', dateLabel:'获奖时间', level:'校级决赛 · 优秀奖', status:'documented', description:'2026 年第十五届“挑战杯”江西省大学生创业计划竞赛校级决赛；项目：“安帼”女性数字安全守护平台。证书团队成员含叶森。' },
+  { id:'social', title:'江西省“三下乡”社会实践优秀个人', category:'社会实践', issuer:'省委宣传部、省教育厅、团省委、省学联（校方报道转述）', date:'2025', dateLabel:'获评年份', level:'省级社会实践荣誉', status:'documented', description:'江西科技职业学院官方微信报道：“青禾”社会实践服务队学生叶森获评优秀个人。', note:'材料为学校官方微信报道截图；校方报道日期为2025年12月23日，不等同于颁奖日期。' },
+  { id:'training', title:'入党积极分子培训班优秀学员', category:'社会实践', issuer:'中共江西科技职业学院委员会党校', date:'2025-05-27', dateLabel:'获评时间', level:'2025 年第一期 · 优秀学员', status:'documented', description:'叶森在 2025 年第一期入党积极分子培训班中表现突出，被授予“优秀学员”称号。' },
+  { id:'edusrc-pending', title:'高校漏洞报送证书兑换记录', category:'安全实践', issuer:'教育漏洞报告平台（EDUSRC）', date:null, dateLabel:'证书获得时间', level:'证书兑换记录', status:'pending', description:'截图存在上海交通大学、江西财经大学漏洞报送证书兑换订单，订单状态为“未发货”。', note:'此为订单截图，不作为已获得感谢证书计入荣誉。' },
+];
+
+const sourceById = Object.fromEntries(entries.map(entry => [entry.id, { ...entry, ...assets[entry.id] }])) as Record<string, Evidence>;
 
 export type AchievementLevel = 'international' | 'national' | 'national-ranking' | 'provincial' | 'school' | 'other';
 export type AchievementCategory = 'technology' | 'certification' | 'competition' | 'social-practice' | 'training';
@@ -9,7 +33,7 @@ export type Achievement = {
   awardDateText: string; dateLabel: string; dateEvidence: string;
   level: AchievementLevel; levelLabel: string; levelEvidence: string;
   category: AchievementCategory; organization: string; summary: string;
-  description: string; significance: string; certificate: string;
+  description: string; significance: string; certificate: string; evidencePath: string;
   officialUrl: string | null; evidence: Evidence; featured: boolean; order: number;
   detailId: string; contextNote?: string; relatedDates?: { label: string; date: string }[];
 };
@@ -57,7 +81,7 @@ const metadata: Metadata[] = [
     dateLabel: '证明出具时间', dateEvidence: 'PDF 落款：2026年09月03日；提交时间另记为2026年08月25日。', levelEvidence: '国家信息安全漏洞库（CNNVD）证明，落款中国信息安全测评中心。',
     contextNote: '材料为提交证明；未载明公开收录时间。', relatedDates: [{ label: '漏洞提交时间', date: '2026-08-25' }] },
   { ...cnvdMetadata, id: 'cnvd-20319', shortTitle: 'CNVD 金和 OA 原创漏洞', dateEvidence: 'PDF“收录时间”：2026年05月02日。' },
-  { ...cnvdMetadata, id: 'cnvd-20312', shortTitle: 'CNVD 多媒体业务系统原创漏洞', dateEvidence: 'PDF“收录时间”：2026年05月02日。' },
+  { ...cnvdMetadata, id: 'cnvd-20312', shortTitle: 'CNVD 神州视翰多媒体系统原创漏洞', dateEvidence: 'PDF“收录时间”：2026年05月02日。' },
   { ...cnvdMetadata, id: 'cnvd-30548', shortTitle: 'CNVD DedeCMS 原创漏洞', dateEvidence: 'PDF“收录时间”：2026年07月28日。' },
   { ...cveMetadata, id: 'cve-10292', shortTitle: 'CVE-2026-10292', dateEvidence: 'PDF 第 1 页 Published: 2026-06-01；不采用页脚打印时间。' },
   { ...cveMetadata, id: 'cve-10293', shortTitle: 'CVE-2026-10293', dateEvidence: 'PDF 第 1 页 Published: 2026-06-01；不采用页脚打印时间。' },
@@ -84,11 +108,11 @@ const metadata: Metadata[] = [
 
 /** Unified public view: source dates/assets come from the evidence archive; no duplicate dates. */
 export const achievements: Achievement[] = metadata.map((meta, order) => {
-  const item = evidenceById[meta.id];
+  const item = sourceById[meta.id];
   return {
     ...meta, title: item.title, date: item.date, ...dateParts(item.date),
     awardDateText: dateText(item.date, true), organization: item.issuer,
-    summary: meta.significance, description: item.description, certificate: item.original,
+    summary: meta.significance, description: item.description, certificate: item.original, evidencePath: item.original,
     officialUrl: item.verificationUrl ?? null, evidence: item, featured: meta.featured ?? false, order,
   };
 });
@@ -112,19 +136,30 @@ export function filterAchievements(filter: AchievementFilter, year: number | nul
   return sortAchievements(achievements.filter(item => (filter === 'all' || item.level === filter || item.category === filter) && (year === null || item.year === year)));
 }
 
-// Technical presentation metadata; all dates and evidence are shared with the overview.
-export const nationalAchievements = [
-  { id: 'cnnvd-18260050', platform: 'CNNVD', severity: '高危', title: '国家信息安全漏洞库 · 提交证明' },
-  { id: 'cnvd-20319', platform: 'CNVD', severity: '高危', title: '金和 OA · SQL 注入' },
-  { id: 'cnvd-20312', platform: 'CNVD', severity: '高危', title: '多媒体业务系统 · SQL 注入' },
-  { id: 'cnvd-30548', platform: 'CNVD', severity: '中危', title: 'DedeCMS · SQL 注入' },
-].map(item => ({ ...achievementById[item.id], ...item, explanation: achievementById[item.id].significance }));
-export const cveAchievements = [
-  { id: 'cve-10292', number: 'CVE-2026-10292', score: 8.7, severity: 'HIGH', title: '路由器任务编辑功能栈溢出', technicalTitle: 'UTT HiPER 1200GW · formTaskEdit' },
-  { id: 'cve-10293', number: 'CVE-2026-10293', score: 8.7, severity: 'HIGH', title: '路由器防火墙功能栈溢出', technicalTitle: 'UTT HiPER 1200GW · formFireWall' },
-  { id: 'cve-87924', number: 'CVE-2026-87924', score: 6.9, severity: 'MEDIUM', title: '库存管理系统身份认证缺失', technicalTitle: 'Invoice Generation · Missing Authentication' },
-  { id: 'cve-87925', number: 'CVE-2026-87925', score: 6.9, severity: 'MEDIUM', title: '库存管理系统 SQL 注入', technicalTitle: 'storeCustomerOrderInvoice · SQL Injection' },
-].map(item => ({ ...achievementById[item.id], ...item }));
+// Technical views are selected from the source, never a second hand-maintained ID list.
+export const nationalAchievements = sortAchievements(achievements.filter(a => a.level === 'national')).map(a => ({
+  ...a, platform: a.evidence.identifier!.split('-')[0], severity: a.evidence.level!, explanation: a.significance,
+}));
+export const cveAchievements = sortAchievements(achievements.filter(a => a.evidence.category === '国际漏洞')).map(a => ({
+  ...a, number: a.evidence.identifier!, score: a.evidence.cvss!.score, severity: a.evidence.cvss!.severity,
+  reporter: a.evidence.reporter!, technicalTitle: a.evidence.technicalTitle!,
+}));
+
+export const evidence: Evidence[] = [
+  ...achievements.map(a => a.evidence),
+  ...entries.filter(e => e.status === 'pending').map(e => sourceById[e.id]),
+];
+export const evidenceById = Object.fromEntries(evidence.map(e => [e.id, e])) as Record<string, Evidence>;
+export const archiveCategories = ['全部', '国家平台', '国际漏洞', '专业认证', '竞赛荣誉', '社会实践', '安全实践'] as const;
+// Groups enumerate levels, never a second list of achievement IDs.
+export const achievementGroups = achievementLevels.map(level => ({
+  ...level, items: sortAchievements(achievements.filter(a => a.level === level.id)),
+})).filter(group => group.items.length);
+
+if (process.env.NODE_ENV === 'development') {
+  for (const a of achievements) if (!a.evidencePath) console.warn(`[achievement integrity] ${a.id}: missing evidencePath`);
+}
+
 export const achievementCounts = {
   cnvd: nationalAchievements.filter(item => item.platform === 'CNVD').length,
   cnnvd: nationalAchievements.filter(item => item.platform === 'CNNVD').length,

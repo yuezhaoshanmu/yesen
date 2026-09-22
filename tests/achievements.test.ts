@@ -3,6 +3,32 @@ import test from 'node:test';
 import { achievements, achievementById, achievementYears, filterAchievements, levelCounts, sortAchievements } from '../data/achievements';
 import { dateText, dateParts, dateStamp } from '../data/achievement-dates';
 import { evidence } from '../data/evidence';
+import { existsSync } from 'node:fs';
+import path from 'node:path';
+import sources from '../data/achievement-sources.json';
+import { achievementGroups, cveAchievements, nationalAchievements, journey } from '../data/achievements';
+
+test('every original proof reaches the overview, technical views and timeline exactly once', () => {
+  const ids = achievements.map(a => a.id).sort();
+  assert.equal(new Set(ids).size, ids.length, 'Duplicate achievement ID');
+  assert.deepEqual([...new Set(sources.flatMap(s => s.achievementIds))].sort(), ids, 'Original proof omitted');
+  assert.deepEqual(achievementGroups.flatMap(g => g.items.map(a => a.id)).sort(), ids, 'Overview omitted/duplicated a proof');
+  assert.deepEqual(journey.map(a => a.evidenceId).sort(), ids);
+  assert.deepEqual(cveAchievements.map(a => a.id).sort(), achievements.filter(a => a.evidence.category === '国际漏洞').map(a => a.id).sort());
+  assert.deepEqual(nationalAchievements.map(a => a.id).sort(), achievements.filter(a => a.level === 'national').map(a => a.id).sort());
+  for (const a of achievements) {
+    for (const key of ['id', 'title', 'level', 'date', 'evidence', 'evidencePath', 'description'] as const) assert.ok(a[key], `${a.id}: ${key}`);
+    assert.ok(existsSync(path.join(process.cwd(), 'public', a.evidencePath)), `${a.id}: missing certificate`);
+  }
+  for (const cve of cveAchievements) {
+    assert.ok(cve.score > 0 && cve.score <= 10);
+    assert.equal(cve.reporter, 'Missa (VulDB User)');
+    assert.equal(cve.officialUrl, `https://www.cve.org/CVERecord?id=${cve.number}`);
+  }
+  assert.equal(achievementById['cnvd-20312'].evidence.certificateNumber, 'CNVD-YCGW-202605069881');
+  assert.match(achievementById['challenge-care'].description, /颐护家——社区居家老年上门护理服务/);
+  assert.match(achievementById['challenge-security'].description, /“安帼”女性数字安全守护平台/);
+});
 
 // Independently transcribed from the original files; see docs/ACHIEVEMENT_DATE_AUDIT.md.
 const verifiedDates: Record<string, string> = {

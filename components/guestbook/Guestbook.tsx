@@ -8,6 +8,8 @@ import type { Message, MessagePage, Stats } from "@/lib/guestbook/types";
 import GuestbookComposer from "./GuestbookComposer";
 import GuestbookMessage from "./GuestbookMessage";
 import SystemArchitecture from "./SystemArchitecture";
+import { emitDataEvent } from "@/components/effects/DataPulse";
+import LivePipeline from '@/components/atelier/LivePipeline';
 
 type Connection = "connecting" | "live" | "reconnecting" | "offline";
 export default function Guestbook() {
@@ -84,6 +86,8 @@ export default function Guestbook() {
 
   useEffect(() => {
     let disposed = false;
+    let presenceCount: number | null = null;
+    const received = new Set<string>();
     let statsTimer: ReturnType<typeof setTimeout> | undefined;
     try {
       const saved = JSON.parse(
@@ -101,9 +105,16 @@ export default function Guestbook() {
       if (statsTimer) clearTimeout(statsTimer);
       statsTimer = setTimeout(() => void refreshStats(), 400);
     };
-    const receive = (row: Message) => {
+    const receive = (row: Message, inserted = false) => {
       if (disposed) return;
+      // Only subscription INSERTs drive packets. Fetch, repair and like UPDATEs do not.
+      const fresh = inserted && row.status === "visible" && !received.has(row.id) && !rows.current.some(message => message.id === row.id);
+      if (inserted) {
+        received.add(row.id);
+        if (received.size > 500) received.delete(received.values().next().value!);
+      }
       update([row]);
+      if (fresh) emitDataEvent({ type: "message", id: row.id });
       statsSoon();
     };
     const presenceKey = crypto.randomUUID();
@@ -112,7 +123,7 @@ export default function Guestbook() {
       .on(
         "postgres_changes",
         { event: "INSERT", schema: "public", table: "guestbook_messages" },
-        (payload) => receive(payload.new as Message),
+        (payload) => receive(payload.new as Message, true),
       )
       .on(
         "postgres_changes",
@@ -128,8 +139,12 @@ export default function Guestbook() {
         },
       )
       .on("presence", { event: "sync" }, () => {
-        if (!disposed && channel)
-          setOnline(Object.keys(channel.presenceState()).length);
+        if (!disposed && channel) {
+          const count = Object.keys(channel.presenceState()).length;
+          if (presenceCount !== null && count > presenceCount) emitDataEvent({ type: "presence" });
+          presenceCount = count;
+          setOnline(count);
+        }
       })
       .subscribe(async (status) => {
         if (disposed) return;
@@ -144,6 +159,7 @@ export default function Guestbook() {
           status === "CLOSED"
         ) {
           setConnection("reconnecting");
+          presenceCount = null;
           setOnline(null);
         }
       });
@@ -184,25 +200,25 @@ export default function Guestbook() {
 
   const stateLabel =
     connection === "live"
-      ? "LIVE"
+      ? "实时连接"
       : connection === "connecting"
-        ? "CONNECTING"
+        ? "正在建立实时连接"
         : connection === "reconnecting"
-          ? "RECONNECTING"
-          : "OFFLINE";
+          ? "暂时使用普通模式"
+          : "暂时使用普通模式";
   return (
-    <section id="guestbook" className="section section-anchor gb-section">
+    <section id="guestbook" className="section section-anchor gb-section museum-scene" data-scene="live">
       <div className="container">
         <div className="gb-heading">
           <SectionHeading
-            index="10"
-            eyebrow="VISITOR WALL"
+            index="12"
+            eyebrow="LIVE SYSTEM / 真实连接"
             title={
               <>
-                留下你的<span className="serif-accent">足迹。</span>
+                一句话，<br /><span className="serif-accent">连接另一块屏幕。</span>
               </>
             }
-            description="这个网站记录我的学习与实践，也希望记录每一次真实的相遇。"
+            description="你的留言，经由数据库，实时抵达每一位在线访客。"
           />
           <span
             className={`gb-live micro ${connection === "live" ? "is-live" : ""}`}
@@ -211,6 +227,8 @@ export default function Guestbook() {
             {stateLabel}
           </span>
         </div>
+        <div className="realtime-word" aria-hidden="true">REALTIME<span>↗</span></div>
+        <LivePipeline database={database} live={connection === 'live'} />
         <div className="gb-layout">
           <div className="gb-left">
             <div className="gb-intro">
@@ -225,6 +243,7 @@ export default function Guestbook() {
               now={now}
               notify={notify}
               onAccepted={(message) => {
+                window.dispatchEvent(new Event('yesen:write-accepted'));
                 // Normal path is the INSERT subscription. A targeted fallback repairs a missed event only.
                 if (!message) return;
                 const timer = setTimeout(async () => {
@@ -254,18 +273,18 @@ export default function Guestbook() {
                   <dd className={database ? "gb-connected" : ""}>
                     <i />
                     {database
-                      ? "Connected"
+                      ? "已连接"
                       : loading
-                        ? "Connecting"
-                        : "Unavailable"}
+                        ? "连接中…"
+                        : "暂不可用"}
                   </dd>
                 </div>
                 <div>
                   <dt>Realtime</dt>
-                  <dd className={connection === "live" ? "gb-connected" : ""}>
+                  <dd data-realtime-source className={connection === "live" ? "gb-connected" : ""}>
                     <i />
                     {connection === "live"
-                      ? "Active"
+                      ? "实时连接"
                       : stateLabel.toLowerCase()}
                   </dd>
                 </div>
@@ -275,7 +294,7 @@ export default function Guestbook() {
                   <strong key={`online-${online}`} className="mono">
                     {online ?? "—"}
                   </strong>
-                  <span>当前在线</span>
+                  <span>当前在线<span className="presence-nodes" data-presence-nodes aria-hidden="true">{Array.from({ length: Math.min(online ?? 0, 3) }, (_, i) => <i key={i} />)}</span></span>
                 </div>
                 <div>
                   <strong key={`total-${stats?.total}`} className="mono">
@@ -321,7 +340,7 @@ export default function Guestbook() {
             {loading && (
               <div className="gb-empty">
                 <div className="gb-loading-line" />
-                <span className="micro">CONNECTING THE DOTS…</span>
+                <span className="micro">连接中…</span>
               </div>
             )}
             {!loading && database && messages.length === 0 && (
