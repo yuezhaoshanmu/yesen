@@ -250,5 +250,11 @@
       "google"
     ],
     "disposition": "achievement"
+  },
+  {
+    "file": "国家奖学金评审参考_CNVD_CNNVD_CVE_EDUSRC成果认定说明.docx",
+    "sha256": "1c2ccae204cb241030b5db11b487288bddd4ee8bd85b63e619e73866ad60dbb5",
+    "achievementIds": [],
+    "disposition": "document-container"
   }
 ]

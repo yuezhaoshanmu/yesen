@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { ArrowUpRight, Menu, X } from 'lucide-react';
-const links=[['home','首页'],['overview','荣誉总览'],['certification','Google 认证'],['edusrc','全国第24'],['national','国家成果'],['global','国际成果'],['competitions','竞赛'],['archive','其他荣誉'],['projects','全栈项目'],['guestbook','留言墙']];
+const links=[['home','首页'],['authority-evidence','权威证据'],['overview','荣誉总览'],['certification','Google 认证'],['edusrc','全国第24'],['national','国家成果'],['global','国际成果'],['competitions','竞赛'],['archive','其他荣誉'],['projects','全栈项目'],['guestbook','留言墙']];
 
 export default function Navbar(){
  const [active,setActive]=useState('home');const [open,setOpen]=useState(false);const [scrolled,setScrolled]=useState(false);const progress=useRef<HTMLDivElement>(null);

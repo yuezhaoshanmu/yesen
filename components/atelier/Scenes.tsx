@@ -27,7 +27,8 @@ function DateMark({ id }: { id: string }) {
 }
 
 export function HeroScene() {
-  return <section id="home" className="museum-hero museum-scene" data-scene="core" aria-labelledby="hero-name">
+  return <section id="hero" className="museum-hero museum-scene" data-scene="core" aria-labelledby="hero-name">
+    <span id="home" className="hero-home-anchor" aria-hidden="true" />
     <div className="hero-registration container"><span><i className="live-dot" /> 叶森的数字成果展</span><span>CYBERSECURITY × FULL STACK</span><span>PORTFOLIO / 2026</span></div>
     <div className="hero-boot-grid" aria-hidden="true" /><div className="editorial-stage container">
       <HeroNetwork />

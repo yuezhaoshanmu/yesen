@@ -8,6 +8,7 @@ import './particles.css';
 import './atelier.css';
 import './direction-v2.css';
 import './flagship.css';
+import './evidence-index.css';
 
 export const metadata: Metadata = {
   title: '叶森 YESEN — 个人技术成果与荣誉档案',

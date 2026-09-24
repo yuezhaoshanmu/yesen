@@ -28,7 +28,11 @@ const labels = ['SEC', 'CVE', 'TLS', 'CNVD', 'API', 'DB'];
 export default function HeroNetwork() {
   const root = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    const host = root.current!, hero = host.closest<HTMLElement>('#home')!;
+    const host = root.current!;
+    // The hero section is identified separately from the home anchor so that
+    // the authority evidence section can follow it as the first content block.
+    const hero = host.closest<HTMLElement>('#hero') ?? host.closest<HTMLElement>('#home');
+    if (!hero) return;
     gsap.registerPlugin(ScrollTrigger);
     const reduced = matchMedia('(prefers-reduced-motion: reduce)');
     const desktop = matchMedia('(min-width: 701px)');
@@ -53,7 +57,8 @@ export default function HeroNetwork() {
           .to('.hero-colophon span:last-child', { opacity:0, duration:.45 }, .55)
           .to('.hero-network', { opacity: .18, duration: .5, ease: 'none' }, .35)
           .to('.editorial-name,.hero-manifesto,.hero-credentials', { clipPath: 'inset(0 0 100% 0)', duration: .4, ease: 'none' }, .6);
-        const line = document.querySelector<HTMLElement>('.academic-handoff')!;
+        const line = document.querySelector<HTMLElement>('.academic-handoff');
+        if (!line) return;
         const relays = hero.querySelectorAll<HTMLElement>('.handoff-particles i');
         gsap.fromTo(relays, { opacity: 0 }, {
           opacity: .6, left: i => `${8 + i / (relays.length - 1) * 84}%`,

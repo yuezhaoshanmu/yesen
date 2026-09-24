@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { achievements } from '@/data/achievements';
 import { ArrowUpRight, Menu, X } from 'lucide-react';
 const primary = [['home', '首页'], ['overview', '成果'], ['national', '网络安全'], ['projects', '项目'], ['guestbook', '留言']];
-const all = [...primary, ['certification', 'Google 认证'], ['edusrc', 'EDUSRC 排名'], ['global', 'CVE 国际成果'], ['competitions', '竞赛荣誉'], ['archive', '全部档案'], ['academic', '学业成绩'], ['fullstack', '全栈系统']];
+const all = [...primary, ['certification', 'Google 认证'], ['edusrc', 'EDUSRC 排名'], ['global', 'CVE 国际成果'], ['authority-evidence', '权威证据索引'], ['competitions', '竞赛荣誉'], ['archive', '全部档案'], ['academic', '学业成绩'], ['fullstack', '全栈系统']];
 export default function Navigation() {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState('home');

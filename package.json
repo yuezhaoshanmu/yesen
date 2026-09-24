@@ -20,7 +20,9 @@
     "test:particles:realtime": "node scripts/particles-realtime-qa.cjs",
     "test:particles:performance": "node scripts/particles-performance-qa.cjs",
     "prebuild": "npm run check:data && npm run test:achievements",
-    "test:flagship": "node scripts/flagship-ui-qa.cjs"
+    "test:flagship": "node scripts/flagship-ui-qa.cjs",
+    "check:evidence-links": "tsx scripts/check-evidence-links.ts",
+    "test:evidence": "tsx --test tests/evidence-index.test.ts"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",
